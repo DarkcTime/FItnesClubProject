@@ -1,0 +1,59 @@
+﻿<Page x:Class="FitnesClub.View.Administrator.Subscriptions.SubscriprionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FitnesClub.View.Administrator.Subscriptions"
+      xmlns:vm="clr-namespace:FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="SubscriprionsPage">
+    <Page.DataContext>
+        <vm:SubsctiprionsPageViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Список абонементов"></TextBlock>
+        <ListView Grid.Row="1" Margin="5" ItemsSource="{Binding Path=ListSubscriptions , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedSubscribe}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" Width="300">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=name}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Path=price}"></GridViewColumn>
+                    <GridViewColumn Header="Период" DisplayMemberBinding="{Binding Path=period.name}"></GridViewColumn>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Path=type_subscribe.name}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <GroupBox Grid.Row="2" Header="Совершение покупки" BorderBrush="Black" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button  Command="{Binding Path=NewClientCommand}">Новый клиент</Button>
+                    <Button  Grid.Row="1" FontSize="10" Command="{Binding Path=OldClientCommand}">Постоянный клиент</Button>
+                    <Button Grid.Row="2"  Command="{Binding Path=PayCommand}" Background="#FF2CA3F5">Оплатить</Button>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Page>
