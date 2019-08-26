@@ -74,11 +74,11 @@
                     <TextBlock Text="Выберите услугу:"></TextBlock>
                     <TextBlock Text="наведите мышкой" MouseEnter="TextBlock_MouseEnter" Grid.Row="1" FontWeight="Black"></TextBlock>
                     <Popup Name="PopupService" StaysOpen="False" Placement="MousePoint">
-                        <ListView ItemsSource="{Binding Path=ListCosmeticServices}" SelectedItem="{Binding Path=SelectedService , UpdateSourceTrigger=PropertyChanged }">
+                        <ListView Width="200" Height="150" ItemsSource="{Binding Path=ListCosmeticServices}" SelectedItem="{Binding Path=SelectedService , UpdateSourceTrigger=PropertyChanged }">
                             <ListView.View>
                                 <GridView >
-                                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
-                                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=price}"></GridViewColumn>
+                                    <GridViewColumn Width="Auto" Header="Название" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                                    <GridViewColumn Width="Auto" Header="Цена" DisplayMemberBinding="{Binding Path=price}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -91,7 +91,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="2" Background="#FF2CA3F5" Command="{Binding Path=RecordCommand}">Записать</Button>
+            <Button Grid.Column="2" Background="#FF2CA3F5" Command="{Binding Path=RecordCommand}" >Записать</Button>
         </Grid>
     </Grid>
 </Page>

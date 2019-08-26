@@ -12,8 +12,6 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.DialogWindowsViewModel
     class DialogWindowSelectNewClientViewModel : Helper.HelperDialogWindows
     {
         
-        
-
         private string firstName, middleName, lastName, email;
 
         public string FirstName
@@ -95,19 +93,8 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.DialogWindowsViewModel
                     age = this.age,
                     Email = this.email
                 };
-                if(HelperDialogWindows.CurrentPage == "SubscribePage")
-                {
-                    ViewModel.AdministratorViewModel.SubscriptionsViewModel.SubsctiprionsPageViewModel.NewClient = client;
-                }
-                else if(HelperDialogWindows.CurrentPage == "CosmeticServicePage")
-                {
-
-                }
-                else
-                {
-                    MessageBox.Show("Ошибка в переданном аргументе");
-                }
-
+                this.context.clients.Add(client);
+                Helper.HelperDialogWindows.NewClient = client;
                 ViewModel.Helper.HelperDialogWindows.DialogResult();
             }
             catch (Exception ex)

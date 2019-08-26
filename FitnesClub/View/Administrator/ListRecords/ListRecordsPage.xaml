@@ -8,9 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
       Title="ListRecordsPage">
-    <Page.DataContext>
-        <vm:ListRecordsPageViewModel/>
-    </Page.DataContext>
+  
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.20*"/>
@@ -42,14 +40,14 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock>По залу</TextBlock>
-                <ComboBox Grid.Row="1" Margin="25 7 25 7" DisplayMemberPath="name" ItemsSource="{Binding Path=ListGymsComboBox}" SelectedItem="{Binding Path=SelectedGym}"></ComboBox>
+                <ComboBox Grid.Row="1"  DisplayMemberPath="name" ItemsSource="{Binding Path=ListGymsComboBox}" SelectedItem="{Binding Path=SelectedGym}"></ComboBox>
                 <TextBlock Grid.Column="1">По тренировке</TextBlock>
-                <ComboBox Grid.Row="3" Margin="25 7 25 7" DisplayMemberPath="FirstName" ItemsSource="{Binding Path=ListTrenersComboBox}" SelectedItem="{Binding Path=SelectedTrener}"></ComboBox>
+                <ComboBox Grid.Row="3"  DisplayMemberPath="FirstName" ItemsSource="{Binding Path=ListTrenersComboBox}" SelectedItem="{Binding Path=SelectedTrener}"></ComboBox>
                 <TextBlock Grid.Row="2">По тренеру</TextBlock>
-                <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="name_ser" Margin="25 7 25 7" ItemsSource="{Binding Path=ListTrainingsComboBox}" SelectedItem="{Binding Path=SelectedTraining}"></ComboBox>
+                <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="name_service.name_ser"  ItemsSource="{Binding Path=ListTrainingsComboBox}" SelectedItem="{Binding Path=SelectedTraining}"></ComboBox>
                 <TextBlock Grid.Row="2" Grid.Column="1">По клиенту</TextBlock>
-                <ComboBox Grid.Row="3" Grid.Column="1" DisplayMemberPath="FirstName" Margin="25 7 25 7" ItemsSource="{Binding Path=ListClientsComboBox}" SelectedItem="{Binding Path=SelectedClient}"></ComboBox>
-                <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="40 20 40 20" Command="{Binding Path=UpdateRecordsCommand}" ToolTip="Выберите параметр для фильтрации">Отфильтровать</Button>
+                <ComboBox Grid.Row="3" Grid.Column="1" DisplayMemberPath="FirstName"  ItemsSource="{Binding Path=ListClientsComboBox}" SelectedItem="{Binding Path=SelectedClient}"></ComboBox>
+                <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  Style="{StaticResource StyleButtonBlue}" Command="{Binding Path=UpdateRecordsCommand}" ToolTip="Выберите параметр для фильтрации">Отфильтровать</Button>
             </Grid>
         </GroupBox>
     </Grid>

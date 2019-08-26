@@ -79,9 +79,6 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
             
         }
 
-        public static Model.clients OldClient { get; set; }
-
-        public static Model.clients NewClient { get; set; }
         public ICommand NewClientCommand { get; set; }
         public ICommand OldClientCommand { get; set; }
         public ICommand PayCommand { get; set; }
@@ -116,11 +113,11 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
         private void PayCommandClick(object obj)
         {
             Model.buy buy;
-            if (OldClient != null && this.FirstName == OldClient.FirstName)
+            if (HelperDialogWindows.SelectedClientOld != null && this.FirstName == HelperDialogWindows.SelectedClientOld.FirstName)
             {
                 buy = new Model.buy()
                 {
-                    client_id = OldClient.id_client,
+                    client_id = HelperDialogWindows.SelectedClientOld.id_client,
                     subsribe_id = this.selectedSubscribe.id_subscribe,
                     discont_id = this.selectedDiscont.id_discont,
                     date_buy = DateTime.Now
@@ -128,10 +125,10 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
             }
             else
             {
-                this.context.clients.Add(NewClient);
+                this.context.clients.Add(Helper.HelperDialogWindows.NewClient);
                 buy = new Model.buy()
                 {
-                    client_id = NewClient.id_client,
+                    client_id = HelperDialogWindows.NewClient.id_client,
                     subsribe_id = this.selectedSubscribe.id_subscribe,
                     discont_id = this.selectedDiscont.id_discont,
                     date_buy = DateTime.Now
@@ -149,8 +146,8 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
             View.Administrator.DialogWindows.DialogWindowSelectOldClient dialogWindowSelectOldClient = new View.Administrator.DialogWindows.DialogWindowSelectOldClient();
             if(dialogWindowSelectOldClient.ShowDialog() == true)
             {
-                this.FirstName = OldClient.FirstName;
-                this.MiddleName = OldClient.MiddleName;
+                this.FirstName = HelperDialogWindows.SelectedClientOld.FirstName;
+                this.MiddleName = HelperDialogWindows.SelectedClientOld.MiddleName;
             }
         }
 
@@ -159,8 +156,8 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
             View.Administrator.DialogWindows.DialogWindowSelectNewClient dialogWindowSelectNewClient = new View.Administrator.DialogWindows.DialogWindowSelectNewClient();
             if (dialogWindowSelectNewClient.ShowDialog() == true)
             {
-                this.FirstName = NewClient.FirstName;
-                this.MiddleName = NewClient.MiddleName;
+                this.FirstName = Helper.HelperDialogWindows.NewClient.FirstName;
+                this.MiddleName = Helper.HelperDialogWindows.NewClient.MiddleName;
             }
         }
 

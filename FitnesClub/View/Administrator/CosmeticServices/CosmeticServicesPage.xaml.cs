@@ -30,5 +30,7 @@ namespace FitnesClub.View.Administrator.CosmeticServices
         {
             this.PopupService.IsOpen = true;
         }
+
+       
     }
 }

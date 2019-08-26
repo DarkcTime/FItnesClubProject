@@ -23,6 +23,7 @@ namespace FitnesClub.View.Administrator.Clients
         public ListClientsPage()
         {
             InitializeComponent();
+            DataContext = new ViewModel.AdministratorViewModel.ClientsViewModel.ListClientsPageViewModel();
         }
     }
 }

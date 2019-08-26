@@ -25,6 +25,19 @@ namespace FitnesClub.View.Administrator.DialogWindows
             DataContext = new ViewModel.AdministratorViewModel.DialogWindowsViewModel.DialogWindowSelectNewClientViewModel();
             ViewModel.Helper.HelperDialogWindows.DialogResult = new Action(() => this.DialogResult = true);
         }
+
+        private void TextBox_PreviewTextInputFirstName(object sender, TextCompositionEventArgs e)
+        {
+            ViewModel.Helper.Helper.OnlyLetter(e);
+        }
+        private void TextBox_PreviewTextInputMiddleName(object sender, TextCompositionEventArgs e)
+        {
+            ViewModel.Helper.Helper.OnlyLetter(e);
+        }
+        private void TextBox_PreviewTextInputLastName(object sender, TextCompositionEventArgs e)
+        {
+            ViewModel.Helper.Helper.OnlyLetter(e);
+        }
     }
     
 }

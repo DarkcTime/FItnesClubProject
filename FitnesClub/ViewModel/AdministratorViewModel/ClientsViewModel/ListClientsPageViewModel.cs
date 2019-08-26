@@ -28,7 +28,6 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ClientsViewModel
             }
         }
 
-        public static clients NewClient{get;set;}
         public ICommand AddClientCommand { get; set; }
 
         public ICommand RemoveClientCommand { get; set; }
@@ -103,12 +102,12 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ClientsViewModel
         {
             try
             {
-                View.Administrator.Clients.DialogAddClient dialogAddClient = new View.Administrator.Clients.DialogAddClient();
-                if (dialogAddClient.ShowDialog() == true)
+                View.Administrator.DialogWindows.DialogWindowSelectNewClient dialog = new View.Administrator.DialogWindows.DialogWindowSelectNewClient();
+                if (dialog.ShowDialog() == true)
                 {
-                    if(NewClient is clients)
+                    if(Helper.HelperDialogWindows.NewClient is clients)
                     {
-                        this.context.clients.Add(NewClient);
+                        this.context.clients.Add(HelperDialogWindows.NewClient);
                         this.context.SaveChanges();
                         this.MessageBoxInformation("Клиент успешно добавлен в таблицу");
                     }

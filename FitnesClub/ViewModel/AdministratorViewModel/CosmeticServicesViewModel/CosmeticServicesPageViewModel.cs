@@ -10,7 +10,16 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.CosmeticServicesViewModel
 {
     class CosmeticServicesPageViewModel : Helper.HelperDialogWindows
     {
-        public List<Model.beauty_services> ListCosmeticServices { get; set; }
+        private List<Model.beauty_services> listCosmeticServices;
+        public List<Model.beauty_services> ListCosmeticServices
+        {
+            get => this.listCosmeticServices;
+            set
+            {
+                this.listCosmeticServices = value;
+                OnPropertyChanged();
+            }
+        }
 
         private Model.beauty_services selectedService;
         public Model.beauty_services SelectedService
@@ -43,8 +52,6 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.CosmeticServicesViewModel
             }
         }
 
-        public static Model.clients NewClient { get; set; }
-        public static Model.clients OldClient { get; set; }
         public ICommand NewClientCommand { get; set; }
         public ICommand OldClientCommand { get; set; }
         public ICommand RecordCommand { get; set; }
@@ -53,8 +60,7 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.CosmeticServicesViewModel
         {
             try
             {
-                this.UpLoadData();
-                ViewModel.Helper.HelperDialogWindows.CurrentPage = "CosmeticService";
+                this.UpLoadData();                
                 this.NewClientCommand = new Command(NewClientCommandClick);
                 this.OldClientCommand = new Command(OldClientCommandClick);
                 this.RecordCommand = new Command(RecordCommandClick, CanRecordCommand);
@@ -67,26 +73,26 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.CosmeticServicesViewModel
         }
         private void UpLoadData()
         {
-            this.ListCosmeticServices = context.beauty_services.ToList();
+            this.ListCosmeticServices = this.context.beauty_services.ToList();
 
         }
 
         private void RecordCommandClick(object obj)
         {
             Model.beauty_servise_list beauty_Servise_List;
-            if (OldClient != null && this.FirstName == OldClient.FirstName)
+            if (Helper.HelperDialogWindows.SelectedClientOld != null && this.FirstName == HelperDialogWindows.SelectedClientOld.FirstName)
             {
                  beauty_Servise_List = new Model.beauty_servise_list()
                 {
-                    client_id = OldClient.id_client,
+                    client_id = HelperDialogWindows.SelectedClientOld.id_client,
                     service_beaty_id = this.selectedService.id_service,
                     date_buy = DateTime.Now
                 };
-                this.context.beauty_servise_list.Add(beauty_Servise_List);
-                        }
+                
+            }
             else
             {
-                this.context.clients.Add(NewClient);
+                
                 beauty_Servise_List = new Model.beauty_servise_list()
                 {
                     client_id = NewClient.id_client,
@@ -99,7 +105,7 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.CosmeticServicesViewModel
             this.context.beauty_servise_list.Add(beauty_Servise_List);
             this.context.SaveChanges();
             this.MessageBoxInformation("Клиент записан на косметическую процедуру(Список записи на процедуры может посмотреть косметолог)");
-
+            this.ClearTextBoxClient();
         }
 
         private bool CanRecordCommand(object arg)
@@ -113,9 +119,15 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.CosmeticServicesViewModel
             View.Administrator.DialogWindows.DialogWindowSelectOldClient dialogOldClient = new View.Administrator.DialogWindows.DialogWindowSelectOldClient();           
             if (dialogOldClient.ShowDialog() == true)
             {
-                this.FirstName = OldClient.FirstName;
-                this.MiddleName = OldClient.MiddleName;
+                this.FirstName = HelperDialogWindows.SelectedClientOld.FirstName;
+                this.MiddleName = HelperDialogWindows.SelectedClientOld.MiddleName;
             }
+        }
+        
+        private void ClearTextBoxClient()
+        {
+            this.FirstName = null;
+            this.MiddleName = null;
         }
 
         private void NewClientCommandClick(object obj)
