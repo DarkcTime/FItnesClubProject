@@ -17,7 +17,7 @@ namespace FitnesClub.Model
         public int id_buy { get; set; }
         public int client_id { get; set; }
         public int subsribe_id { get; set; }
-        public Nullable<int> discont_id { get; set; }
+        public int discont_id { get; set; }
         public System.DateTime date_buy { get; set; }
     
         public virtual clients clients { get; set; }
