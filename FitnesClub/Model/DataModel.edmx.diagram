@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d15e7b78aa0494595dfbb9c4c55791c" Name="Diagram1">
+        <EntityTypeShape EntityType="FitnesClubModel.amenities" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.beauty_services" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.beauty_servise_list" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.buy" Width="1.5" PointX="7.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.clients" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.day" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.discont" Width="1.5" PointX="5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.employees" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.exercise" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.gym" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.name_service" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.period" Width="1.5" PointX="2.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.subscribe" Width="1.5" PointX="5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.time" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.type_discont" Width="1.5" PointX="2.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.type_subscribe" Width="1.5" PointX="2.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.type_user" Width="1.5" PointX="1.5" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesClubModel.users" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <AssociationConnector Association="FitnesClubModel.FK__exercise__servic__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_amenities_day" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_amenities_employees" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_amenities_gym" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_amenities_name_service" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_amenities_time" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_beauty_servise_list_beauty_services" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_beauty_servise_list_clients" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_buy_clients" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_buy_discont" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_buy_subscribe" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_clients_users" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_exercise_clients" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_discont_type_discont" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK__subscribe__perio__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_subscribe_type_subscribe" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesClubModel.FK_users_type_user" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

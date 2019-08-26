@@ -1,0 +1,44 @@
+﻿<Application x:Class="FitnesClub.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FitnesClub"
+             StartupUri="View\LoginView\Authorization.xaml">
+    <Application.Resources>
+        <Style x:Key="StandartStyle">
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontFamily" Value="Arial"/>
+        </Style>
+        
+        <Style  TargetType="TextBlock" BasedOn="{StaticResource StandartStyle}">
+            
+        </Style>
+        <Style x:Key="StyleButtonMainMenu" TargetType="Button" >
+            <Setter Property="Background" Value="#FF2CA3F5"></Setter>
+            <Setter Property="Foreground" Value="White" > </Setter>
+        </Style>
+        <Style TargetType="Button"  BasedOn="{StaticResource StandartStyle}">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource StandartStyle}">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="20"/>
+        </Style>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource StandartStyle}">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="20"/>
+        </Style>
+        <Style x:Key="StyleMenuItem" TargetType="MenuItem" BasedOn="{StaticResource StandartStyle}">
+            <Setter Property="FontSize" Value="10"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            
+        </Style>
+        <Style  x:Key="StyleTextBlockHeader" TargetType="TextBlock" BasedOn="{StaticResource StandartStyle}">
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+       
+        </Style>
+
+    </Application.Resources>
+</Application>

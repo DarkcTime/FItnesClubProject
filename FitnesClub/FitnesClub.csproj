@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31C926E2-12A5-4458-AD61-F512EF517392}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FitnesClub</RootNamespace>
+    <AssemblyName>FitnesClub</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Model\amenities.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\beauty_services.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\beauty_servise_list.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\buy.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\clients.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\day.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\discont.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\employees.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\exercise.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\gym.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\name_service.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\period.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\subscribe.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\time.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\type_discont.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\type_subscribe.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\type_user.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\users.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AdministratorViewModel\ClientsViewModel\DialogAddClientViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\ClientsViewModel\ListClientsPageViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\DialogWindowsViewModel\DialogWindowSelectNewClientViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\DialogWindowsViewModel\DialogWindowSelectOldClientViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\DialogWindowListEventsViewModel\DialogWindowRecordClientViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\ListEventPageDanceViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\ListEventsPageFitnesViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\ListEventsPageIronViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\ListEventsPageMenuViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\ListEventsPageYogaViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\LIstRecordsViewModel\ListRecordsPageViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\SubscriptionsViewModel\SubsctiprionsPageViewModel.cs" />
+    <Compile Include="ViewModel\Helper\Command.cs" />
+    <Compile Include="ViewModel\Helper\EventsHepler.cs" />
+    <Compile Include="ViewModel\Helper\Helper.cs" />
+    <Compile Include="ViewModel\Helper\HelperDialogWindows.cs" />
+    <Compile Include="ViewModel\Helper\MenuHeplper.cs" />
+    <Compile Include="ViewModel\Helper\ViewModelProp.cs" />
+    <Compile Include="ViewModel\LoginViewModel\AuthorizationViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel\RegistrationViewModel.cs" />
+    <Compile Include="ViewModel\MainMenuViewModel\MainMenuAdministratorViewModel.cs" />
+    <Compile Include="View\Administrator\Clients\DialogAddClient.xaml.cs">
+      <DependentUpon>DialogAddClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\Clients\ListClientsPage.xaml.cs">
+      <DependentUpon>ListClientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\DialogWindows\DialogWindowSelectNewClient.xaml.cs">
+      <DependentUpon>DialogWindowSelectNewClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\DialogWindows\DialogWindowSelectOldClient.xaml.cs">
+      <DependentUpon>DialogWindowSelectOldClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListEventsPage\DialogWindowListEvents\DialogWindowRecordClient.xaml.cs">
+      <DependentUpon>DialogWindowRecordClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListEventsPage\ListEventPageIron.xaml.cs">
+      <DependentUpon>ListEventPageIron.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListEventsPage\ListEventsPageDance.xaml.cs">
+      <DependentUpon>ListEventsPageDance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListEventsPage\ListEventsPageFitnes.xaml.cs">
+      <DependentUpon>ListEventsPageFitnes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListEventsPage\ListEventsPageMenu.xaml.cs">
+      <DependentUpon>ListEventsPageMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListEventsPage\ListEventsPageYoga.xaml.cs">
+      <DependentUpon>ListEventsPageYoga.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListRecords\ListRecordsPage.xaml.cs">
+      <DependentUpon>ListRecordsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\Subscriptions\SubscriprionsPage.xaml.cs">
+      <DependentUpon>SubscriprionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView\Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView\Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\MainMenu\MainMenuAdministrator.xaml.cs">
+      <DependentUpon>MainMenuAdministrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainMenu\MainMenuClient.xaml.cs">
+      <DependentUpon>MainMenuClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainMenu\MainMenuCosmetician.xaml.cs">
+      <DependentUpon>MainMenuCosmetician.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainMenu\MainMenuTrener.xaml.cs">
+      <DependentUpon>MainMenuTrener.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\Administrator\Clients\DialogAddClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\Clients\ListClientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\DialogWindows\DialogWindowSelectNewClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\DialogWindows\DialogWindowSelectOldClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListEventsPage\DialogWindowListEvents\DialogWindowRecordClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListEventsPage\ListEventPageIron.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListEventsPage\ListEventsPageDance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListEventsPage\ListEventsPageFitnes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListEventsPage\ListEventsPageMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListEventsPage\ListEventsPageYoga.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListRecords\ListRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\Subscriptions\SubscriprionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginView\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginView\Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainMenu\MainMenuAdministrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainMenu\MainMenuClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainMenu\MainMenuCosmetician.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainMenu\MainMenuTrener.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\DataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DataModel.edmx.diagram">
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resourse\fen.png" />
+    <Resource Include="Resourse\administrator.png" />
+    <Resource Include="Resourse\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\DataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

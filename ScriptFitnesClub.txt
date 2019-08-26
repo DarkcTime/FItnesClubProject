@@ -1,0 +1,784 @@
+USE [master]
+GO
+/****** Object:  Database [FitnesClub]    Script Date: 25.08.2019 17:14:43 ******/
+CREATE DATABASE [FitnesClub]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'FitnesClub', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\FitnesClub.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'FitnesClub_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\FitnesClub_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [FitnesClub] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [FitnesClub].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [FitnesClub] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [FitnesClub] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [FitnesClub] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [FitnesClub] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [FitnesClub] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [FitnesClub] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [FitnesClub] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [FitnesClub] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [FitnesClub] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [FitnesClub] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [FitnesClub] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [FitnesClub] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [FitnesClub] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [FitnesClub] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [FitnesClub] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [FitnesClub] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [FitnesClub] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [FitnesClub] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [FitnesClub] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [FitnesClub] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [FitnesClub] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [FitnesClub] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [FitnesClub] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [FitnesClub] SET  MULTI_USER 
+GO
+ALTER DATABASE [FitnesClub] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [FitnesClub] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [FitnesClub] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [FitnesClub] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [FitnesClub] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [FitnesClub] SET QUERY_STORE = OFF
+GO
+USE [FitnesClub]
+GO
+/****** Object:  Table [dbo].[amenities]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[amenities](
+	[id_servise] [int] NOT NULL,
+	[name_id] [int] NOT NULL,
+	[time_id] [int] NOT NULL,
+	[gym_id] [int] NOT NULL,
+	[day_id] [int] NOT NULL,
+	[employees_id] [int] NOT NULL,
+ CONSTRAINT [PK__Amenitie__D06C37BCD40D791D] PRIMARY KEY CLUSTERED 
+(
+	[id_servise] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[beauty_services]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[beauty_services](
+	[id_service] [int] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_beauty_services] PRIMARY KEY CLUSTERED 
+(
+	[id_service] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[beauty_servise_list]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[beauty_servise_list](
+	[id_service] [int] IDENTITY(1,1) NOT NULL,
+	[client_id] [int] NOT NULL,
+	[service_beaty_id] [int] NOT NULL,
+	[price] [decimal](10, 2) NOT NULL,
+ CONSTRAINT [PK_beauty_servise] PRIMARY KEY CLUSTERED 
+(
+	[id_service] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[buy]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[buy](
+	[id_buy] [int] IDENTITY(1,1) NOT NULL,
+	[client_id] [int] NOT NULL,
+	[subsribe_id] [int] NOT NULL,
+	[discont_id] [int] NULL,
+	[date_buy] [datetime] NOT NULL,
+ CONSTRAINT [PK__buy__D507E43FB1CAB72E] PRIMARY KEY CLUSTERED 
+(
+	[id_buy] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[clients]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[clients](
+	[id_client] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](50) NOT NULL,
+	[MiddleName] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](50) NULL,
+	[Email] [nvarchar](50) NULL,
+	[account_id] [int] NULL,
+	[age] [int] NOT NULL,
+ CONSTRAINT [PK__clients__6EC2B6C02434A38C] PRIMARY KEY CLUSTERED 
+(
+	[id_client] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[day]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[day](
+	[id_day] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK__Day__8B516ABBE211ED65] PRIMARY KEY CLUSTERED 
+(
+	[id_day] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[discont]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[discont](
+	[id_discont] [int] NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+	[number] [int] NOT NULL,
+	[criterion] [nvarchar](1000) NOT NULL,
+	[type_discont_id] [int] NOT NULL,
+ CONSTRAINT [PK__discont__FE9A906DA7021258] PRIMARY KEY CLUSTERED 
+(
+	[id_discont] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[employees]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[employees](
+	[id_employees] [int] IDENTITY(18,1) NOT NULL,
+	[FirstName] [nvarchar](50) NOT NULL,
+	[MiddleName] [nvarchar](50) NULL,
+	[id_user] [int] NULL,
+ CONSTRAINT [PK__Employee__822CD266A3F9CA1A] PRIMARY KEY CLUSTERED 
+(
+	[id_employees] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[exercise]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[exercise](
+	[id_exercise] [int] IDENTITY(1,1) NOT NULL,
+	[service_id] [int] NOT NULL,
+	[client_id] [int] NOT NULL,
+	[date_write] [datetime] NOT NULL,
+ CONSTRAINT [PK__exercise__AC4BB2DE8FA2FAB1] PRIMARY KEY CLUSTERED 
+(
+	[id_exercise] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[gym]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[gym](
+	[id_gym] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK__Gym__3EC25F69DE50A5A0] PRIMARY KEY CLUSTERED 
+(
+	[id_gym] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[name_service]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[name_service](
+	[id_name] [int] NOT NULL,
+	[name_ser] [nvarchar](150) NOT NULL,
+ CONSTRAINT [PK__name_ser__35AB5B24F65BFE79] PRIMARY KEY CLUSTERED 
+(
+	[id_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[period]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[period](
+	[id_period] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_period] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[subscribe]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[subscribe](
+	[id_subscribe] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](1000) NOT NULL,
+	[price] [decimal](10, 2) NOT NULL,
+	[period_id] [int] NULL,
+	[type_id] [int] NOT NULL,
+ CONSTRAINT [PK__subscrib__31F88831CBA25D36] PRIMARY KEY CLUSTERED 
+(
+	[id_subscribe] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[time]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[time](
+	[id_time] [int] NOT NULL,
+	[times] [nvarchar](1000) NOT NULL,
+ CONSTRAINT [PK__Time__0FB76BB9F03669A4] PRIMARY KEY CLUSTERED 
+(
+	[id_time] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[type_discont]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[type_discont](
+	[id_type] [int] NOT NULL,
+	[name] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_type_discont] PRIMARY KEY CLUSTERED 
+(
+	[id_type] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[type_subscribe]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[type_subscribe](
+	[id_type] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_type] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[type_user]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[type_user](
+	[id_type] [int] NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_type_employees] PRIMARY KEY CLUSTERED 
+(
+	[id_type] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[users]    Script Date: 25.08.2019 17:14:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[users](
+	[id_user] [int] IDENTITY(1,1) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
+	[login] [nvarchar](50) NOT NULL,
+	[type_user_id] [int] NOT NULL,
+ CONSTRAINT [PK__users__D2D146374E11B0C2] PRIMARY KEY CLUSTERED 
+(
+	[id_user] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (1, 1, 2, 1, 2, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (2, 2, 2, 1, 4, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (3, 4, 3, 1, 7, 2)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (4, 5, 4, 1, 7, 2)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (5, 2, 5, 1, 2, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (6, 3, 5, 1, 4, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (7, 6, 5, 1, 6, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (8, 7, 7, 1, 2, 3)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (9, 7, 7, 1, 4, 3)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (10, 1, 7, 1, 6, 4)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (11, 8, 7, 1, 7, 5)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (14, 9, 8, 1, 1, 4)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (15, 15, 7, 2, 6, 16)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (16, 16, 7, 2, 7, 3)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (17, 17, 12, 2, 2, 10)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (18, 16, 12, 2, 3, 3)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (19, 17, 12, 2, 4, 10)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (20, 18, 12, 2, 5, 4)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (21, 19, 13, 2, 1, 16)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (22, 19, 13, 2, 3, 16)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (23, 6, 13, 2, 5, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (24, 20, 14, 2, 1, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (25, 20, 14, 2, 3, 1)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (26, 21, 15, 3, 2, 18)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (27, 21, 15, 3, 4, 18)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (28, 22, 24, 3, 6, 12)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (29, 21, 13, 3, 1, 7)
+GO
+INSERT [dbo].[amenities] ([id_servise], [name_id], [time_id], [gym_id], [day_id], [employees_id]) VALUES (30, 21, 13, 3, 3, 7)
+GO
+SET IDENTITY_INSERT [dbo].[clients] ON 
+GO
+INSERT [dbo].[clients] ([id_client], [FirstName], [MiddleName], [LastName], [Email], [account_id], [age]) VALUES (1, N'Влад', N'Чекмарёв', N'Александрович ', N'vlad@mail', 4, 10)
+GO
+INSERT [dbo].[clients] ([id_client], [FirstName], [MiddleName], [LastName], [Email], [account_id], [age]) VALUES (2, N'Гриша', N'Никифоров', NULL, N'grisha@mail.ru', 5, 10)
+GO
+INSERT [dbo].[clients] ([id_client], [FirstName], [MiddleName], [LastName], [Email], [account_id], [age]) VALUES (5, N'Елена ', N'Филиповна', NULL, N'@mail.ru', NULL, 10)
+GO
+SET IDENTITY_INSERT [dbo].[clients] OFF
+GO
+SET IDENTITY_INSERT [dbo].[day] ON 
+GO
+INSERT [dbo].[day] ([id_day], [name]) VALUES (1, N'Понедельник')
+GO
+INSERT [dbo].[day] ([id_day], [name]) VALUES (2, N'Вторник')
+GO
+INSERT [dbo].[day] ([id_day], [name]) VALUES (3, N'Среда')
+GO
+INSERT [dbo].[day] ([id_day], [name]) VALUES (4, N'Четверг')
+GO
+INSERT [dbo].[day] ([id_day], [name]) VALUES (5, N'Пятница')
+GO
+INSERT [dbo].[day] ([id_day], [name]) VALUES (6, N'Суббота')
+GO
+INSERT [dbo].[day] ([id_day], [name]) VALUES (7, N'Воскресенье')
+GO
+SET IDENTITY_INSERT [dbo].[day] OFF
+GO
+INSERT [dbo].[discont] ([id_discont], [name], [number], [criterion], [type_discont_id]) VALUES (1, N'Семейная', 5, N'При единовременной покупке двух клубных карт семейной парой. Предоставляется при предъявлении документа, подтверждающего брак.', 1)
+GO
+INSERT [dbo].[discont] ([id_discont], [name], [number], [criterion], [type_discont_id]) VALUES (2, N'Семейная ', 50, N'При покупке клубной карты ребенку, возрастом до 14 лет, родители кото ого являются обладателями клубных карт.', 1)
+GO
+INSERT [dbo].[discont] ([id_discont], [name], [number], [criterion], [type_discont_id]) VALUES (3, N'Корпоративная ', 5, N'При единовременной покупке от 5-ти до 10-ти клубных карт или абонементов.', 2)
+GO
+INSERT [dbo].[discont] ([id_discont], [name], [number], [criterion], [type_discont_id]) VALUES (4, N'Корпоративная ', 10, N'При единовременной покупке от 10 абонементов и клубных карт.', 2)
+GO
+INSERT [dbo].[discont] ([id_discont], [name], [number], [criterion], [type_discont_id]) VALUES (5, N'Без скидки', 0, N'Покупка по полной стоимости', 3)
+GO
+SET IDENTITY_INSERT [dbo].[employees] ON 
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (1, N'Марина', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (2, N'Алла', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (3, N'Ирина', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (4, N'Лена', N'Красильникова', 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (5, N'Антон', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (6, N'Вика', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (7, N'Ксюша', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (8, N'Надя', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (9, N'Наталья', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (10, N'Оля', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (11, N'Маша', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (12, N'Андрей', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (13, N'Полина', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (14, N'Евгения', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (15, N'Татьяна', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (16, N'Оксана', NULL, 1)
+GO
+INSERT [dbo].[employees] ([id_employees], [FirstName], [MiddleName], [id_user]) VALUES (18, N'Елена', NULL, 1)
+GO
+SET IDENTITY_INSERT [dbo].[employees] OFF
+GO
+SET IDENTITY_INSERT [dbo].[exercise] ON 
+GO
+INSERT [dbo].[exercise] ([id_exercise], [service_id], [client_id], [date_write]) VALUES (1, 11, 2, CAST(N'2019-08-23T15:39:22.660' AS DateTime))
+GO
+INSERT [dbo].[exercise] ([id_exercise], [service_id], [client_id], [date_write]) VALUES (3, 18, 2, CAST(N'2019-08-23T15:39:22.660' AS DateTime))
+GO
+INSERT [dbo].[exercise] ([id_exercise], [service_id], [client_id], [date_write]) VALUES (4, 1, 2, CAST(N'2019-08-23T15:39:22.660' AS DateTime))
+GO
+INSERT [dbo].[exercise] ([id_exercise], [service_id], [client_id], [date_write]) VALUES (5, 1, 1, CAST(N'2019-08-23T15:39:22.660' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[exercise] OFF
+GO
+SET IDENTITY_INSERT [dbo].[gym] ON 
+GO
+INSERT [dbo].[gym] ([id_gym], [name]) VALUES (1, N'Фитнес зал')
+GO
+INSERT [dbo].[gym] ([id_gym], [name]) VALUES (2, N'Хореографический зал')
+GO
+INSERT [dbo].[gym] ([id_gym], [name]) VALUES (3, N'Железный зал')
+GO
+INSERT [dbo].[gym] ([id_gym], [name]) VALUES (4, N'Йога-студия')
+GO
+SET IDENTITY_INSERT [dbo].[gym] OFF
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (1, N'Интервальная тренировка ')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (2, N'Problem zone ')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (3, N'Похудейка')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (4, N'Фитбол')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (5, N'Танцевальная аэробика + кор.фигуры')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (6, N'Худеем танцуя ')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (7, N'Детская аэробика ')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (8, N'BODY COMBAT + кор.фигуры')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (9, N'Step + Power Class')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (10, N'Коррекция фигуры')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (11, N'Functional cuts')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (12, N'Интервальная тренировка ')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (13, N'Фитнес йога ( для начинающих и среднего уровня подготовки)')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (14, N'Тай-бо + кор.фигуры')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (15, N'Стрип пластика + Stretch')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (16, N'Аэробика в стиле РЕТРО')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (17, N'Pilates mini Ball')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (18, N'Power-йога')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (19, N'Стрип-пластика + Stretch')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (20, N'Lady''s Style')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (21, N'Hot_Iron')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (22, N'ЦИ_ГУН')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (23, N'YOGA')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (24, N'Yoga,Stretch,Relax (для начинающих)')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (25, N'Фитнес йога')
+GO
+INSERT [dbo].[name_service] ([id_name], [name_ser]) VALUES (26, N'Pilates Mix')
+GO
+SET IDENTITY_INSERT [dbo].[period] ON 
+GO
+INSERT [dbo].[period] ([id_period], [name]) VALUES (1, N'1 месяц ')
+GO
+INSERT [dbo].[period] ([id_period], [name]) VALUES (2, N'3 месяца ')
+GO
+INSERT [dbo].[period] ([id_period], [name]) VALUES (3, N'6 месяцев')
+GO
+INSERT [dbo].[period] ([id_period], [name]) VALUES (4, N'12 месяцев')
+GO
+INSERT [dbo].[period] ([id_period], [name]) VALUES (5, N'Одноразовый')
+GO
+SET IDENTITY_INSERT [dbo].[period] OFF
+GO
+SET IDENTITY_INSERT [dbo].[subscribe] ON 
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (1, N'Спринт', CAST(2900.00 AS Decimal(10, 2)), 1, 1)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (2, N'Экспресс ', CAST(6500.00 AS Decimal(10, 2)), 2, 1)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (3, N'Энерджи', CAST(11300.00 AS Decimal(10, 2)), 3, 1)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (4, N'Профи', CAST(20500.00 AS Decimal(10, 2)), 4, 1)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (5, N'Фитнес-утро', CAST(1350.00 AS Decimal(10, 2)), 1, 2)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (6, N'Фитнес-вечер', CAST(1950.00 AS Decimal(10, 2)), 1, 2)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (7, N'Персональная тренировка в тренажерном зале для обладателей клубной карты ', CAST(400.00 AS Decimal(10, 2)), 5, 3)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (9, N'Персональная тренировка в тренажерном зале + посещение сауны + прокат полотенца ', CAST(600.00 AS Decimal(10, 2)), 5, 3)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (10, N'«Комби» - 5 персональных тренировок в тренажерном зале+ посещение финской сауны+ прокат полотенца', CAST(2800.00 AS Decimal(10, 2)), 5, 3)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (11, N'«XL комби» - 10 персональных тренировок в тренажерном зале + посещение финской сауны + прокат полотенца', CAST(5500.00 AS Decimal(10, 2)), 5, 3)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (12, N'Персональная тренировка по фитнес аэробике, йоге', CAST(700.00 AS Decimal(10, 2)), 5, 3)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (13, N'Персональная тренировка по фитнес аэробике, йоге и т.д. (2-3 чел. одновременно)', CAST(1000.00 AS Decimal(10, 2)), 5, 3)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (14, N'Разработка индивидуальной программы тренировок', CAST(500.00 AS Decimal(10, 2)), 5, 3)
+GO
+INSERT [dbo].[subscribe] ([id_subscribe], [name], [price], [period_id], [type_id]) VALUES (15, N'Абонемент «Лучик» - детский фитнес (8 тренировок)', CAST(700.00 AS Decimal(10, 2)), 5, 3)
+GO
+SET IDENTITY_INSERT [dbo].[subscribe] OFF
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (1, N'09:00-10:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (2, N'10:00-11:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (3, N'11:00-12:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (4, N'12:00-13:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (5, N'13:00-14:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (6, N'15:00-16:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (7, N'16:00-17:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (8, N'17:00-18:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (9, N'18:00-19:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (10, N'19:00-20:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (11, N'20:00-21:00')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (12, N'17:45-18:45')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (13, N'18:45-19:45')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (14, N'19:45-20:45')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (15, N'18:15-19:15')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (16, N'18:45-19:45')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (17, N'19:15-20:15')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (18, N'19:45-20:45')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (19, N'20:15-21:15')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (20, N'17:15-18:15')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (21, N'17:30-18:30')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (22, N'18:30-19:30')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (23, N'19:30-20:30')
+GO
+INSERT [dbo].[time] ([id_time], [times]) VALUES (24, N'16:00-18:00')
+GO
+INSERT [dbo].[type_discont] ([id_type], [name]) VALUES (1, N'Клубные карты')
+GO
+INSERT [dbo].[type_discont] ([id_type], [name]) VALUES (2, N'Клубные карты и абонементы')
+GO
+INSERT [dbo].[type_discont] ([id_type], [name]) VALUES (3, N'Все продукты')
+GO
+SET IDENTITY_INSERT [dbo].[type_subscribe] ON 
+GO
+INSERT [dbo].[type_subscribe] ([id_type], [name]) VALUES (1, N'Клубная карта ')
+GO
+INSERT [dbo].[type_subscribe] ([id_type], [name]) VALUES (2, N'Абонемент ')
+GO
+INSERT [dbo].[type_subscribe] ([id_type], [name]) VALUES (3, N'Дополнительные услуги')
+GO
+SET IDENTITY_INSERT [dbo].[type_subscribe] OFF
+GO
+INSERT [dbo].[type_user] ([id_type], [name]) VALUES (1, N'Администратор')
+GO
+INSERT [dbo].[type_user] ([id_type], [name]) VALUES (2, N'Тренер')
+GO
+INSERT [dbo].[type_user] ([id_type], [name]) VALUES (3, N'Косметолог')
+GO
+INSERT [dbo].[type_user] ([id_type], [name]) VALUES (4, N'Клиент')
+GO
+SET IDENTITY_INSERT [dbo].[users] ON 
+GO
+INSERT [dbo].[users] ([id_user], [password], [login], [type_user_id]) VALUES (1, N'admin', N'admin', 1)
+GO
+INSERT [dbo].[users] ([id_user], [password], [login], [type_user_id]) VALUES (2, N'cosm', N'cosm', 3)
+GO
+INSERT [dbo].[users] ([id_user], [password], [login], [type_user_id]) VALUES (4, N'6200', N'vlad', 4)
+GO
+INSERT [dbo].[users] ([id_user], [password], [login], [type_user_id]) VALUES (5, N'grh', N'grish', 4)
+GO
+SET IDENTITY_INSERT [dbo].[users] OFF
+GO
+ALTER TABLE [dbo].[amenities]  WITH CHECK ADD  CONSTRAINT [FK_amenities_day] FOREIGN KEY([day_id])
+REFERENCES [dbo].[day] ([id_day])
+GO
+ALTER TABLE [dbo].[amenities] CHECK CONSTRAINT [FK_amenities_day]
+GO
+ALTER TABLE [dbo].[amenities]  WITH CHECK ADD  CONSTRAINT [FK_amenities_employees] FOREIGN KEY([employees_id])
+REFERENCES [dbo].[employees] ([id_employees])
+GO
+ALTER TABLE [dbo].[amenities] CHECK CONSTRAINT [FK_amenities_employees]
+GO
+ALTER TABLE [dbo].[amenities]  WITH CHECK ADD  CONSTRAINT [FK_amenities_gym] FOREIGN KEY([gym_id])
+REFERENCES [dbo].[gym] ([id_gym])
+GO
+ALTER TABLE [dbo].[amenities] CHECK CONSTRAINT [FK_amenities_gym]
+GO
+ALTER TABLE [dbo].[amenities]  WITH CHECK ADD  CONSTRAINT [FK_amenities_name_service] FOREIGN KEY([name_id])
+REFERENCES [dbo].[name_service] ([id_name])
+GO
+ALTER TABLE [dbo].[amenities] CHECK CONSTRAINT [FK_amenities_name_service]
+GO
+ALTER TABLE [dbo].[amenities]  WITH CHECK ADD  CONSTRAINT [FK_amenities_time] FOREIGN KEY([time_id])
+REFERENCES [dbo].[time] ([id_time])
+GO
+ALTER TABLE [dbo].[amenities] CHECK CONSTRAINT [FK_amenities_time]
+GO
+ALTER TABLE [dbo].[beauty_servise_list]  WITH CHECK ADD  CONSTRAINT [FK_beauty_servise_list_beauty_services] FOREIGN KEY([service_beaty_id])
+REFERENCES [dbo].[beauty_services] ([id_service])
+GO
+ALTER TABLE [dbo].[beauty_servise_list] CHECK CONSTRAINT [FK_beauty_servise_list_beauty_services]
+GO
+ALTER TABLE [dbo].[beauty_servise_list]  WITH CHECK ADD  CONSTRAINT [FK_beauty_servise_list_clients] FOREIGN KEY([client_id])
+REFERENCES [dbo].[clients] ([id_client])
+GO
+ALTER TABLE [dbo].[beauty_servise_list] CHECK CONSTRAINT [FK_beauty_servise_list_clients]
+GO
+ALTER TABLE [dbo].[buy]  WITH CHECK ADD  CONSTRAINT [FK_buy_clients] FOREIGN KEY([client_id])
+REFERENCES [dbo].[clients] ([id_client])
+GO
+ALTER TABLE [dbo].[buy] CHECK CONSTRAINT [FK_buy_clients]
+GO
+ALTER TABLE [dbo].[buy]  WITH CHECK ADD  CONSTRAINT [FK_buy_discont] FOREIGN KEY([discont_id])
+REFERENCES [dbo].[discont] ([id_discont])
+GO
+ALTER TABLE [dbo].[buy] CHECK CONSTRAINT [FK_buy_discont]
+GO
+ALTER TABLE [dbo].[buy]  WITH CHECK ADD  CONSTRAINT [FK_buy_subscribe] FOREIGN KEY([subsribe_id])
+REFERENCES [dbo].[subscribe] ([id_subscribe])
+GO
+ALTER TABLE [dbo].[buy] CHECK CONSTRAINT [FK_buy_subscribe]
+GO
+ALTER TABLE [dbo].[clients]  WITH CHECK ADD  CONSTRAINT [FK_clients_users] FOREIGN KEY([account_id])
+REFERENCES [dbo].[users] ([id_user])
+GO
+ALTER TABLE [dbo].[clients] CHECK CONSTRAINT [FK_clients_users]
+GO
+ALTER TABLE [dbo].[discont]  WITH CHECK ADD  CONSTRAINT [FK_discont_type_discont] FOREIGN KEY([type_discont_id])
+REFERENCES [dbo].[type_discont] ([id_type])
+GO
+ALTER TABLE [dbo].[discont] CHECK CONSTRAINT [FK_discont_type_discont]
+GO
+ALTER TABLE [dbo].[exercise]  WITH CHECK ADD  CONSTRAINT [FK__exercise__servic__160F4887] FOREIGN KEY([service_id])
+REFERENCES [dbo].[amenities] ([id_servise])
+GO
+ALTER TABLE [dbo].[exercise] CHECK CONSTRAINT [FK__exercise__servic__160F4887]
+GO
+ALTER TABLE [dbo].[exercise]  WITH CHECK ADD  CONSTRAINT [FK_exercise_clients] FOREIGN KEY([client_id])
+REFERENCES [dbo].[clients] ([id_client])
+GO
+ALTER TABLE [dbo].[exercise] CHECK CONSTRAINT [FK_exercise_clients]
+GO
+ALTER TABLE [dbo].[subscribe]  WITH CHECK ADD  CONSTRAINT [FK__subscribe__perio__787EE5A0] FOREIGN KEY([period_id])
+REFERENCES [dbo].[period] ([id_period])
+GO
+ALTER TABLE [dbo].[subscribe] CHECK CONSTRAINT [FK__subscribe__perio__787EE5A0]
+GO
+ALTER TABLE [dbo].[subscribe]  WITH CHECK ADD  CONSTRAINT [FK_subscribe_type_subscribe] FOREIGN KEY([type_id])
+REFERENCES [dbo].[type_subscribe] ([id_type])
+GO
+ALTER TABLE [dbo].[subscribe] CHECK CONSTRAINT [FK_subscribe_type_subscribe]
+GO
+ALTER TABLE [dbo].[users]  WITH CHECK ADD  CONSTRAINT [FK_users_type_user] FOREIGN KEY([type_user_id])
+REFERENCES [dbo].[type_user] ([id_type])
+GO
+ALTER TABLE [dbo].[users] CHECK CONSTRAINT [FK_users_type_user]
+GO
+USE [master]
+GO
+ALTER DATABASE [FitnesClub] SET  READ_WRITE 
+GO
