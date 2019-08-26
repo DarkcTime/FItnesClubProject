@@ -1,15 +1,37 @@
-﻿using System;
+﻿using FitnesClub.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace FitnesClub.ViewModel.Helper
 {
     class Helper : ViewModelProp
     {
-        protected Model.FitnesClubEntities context = new Model.FitnesClubEntities();
+        protected FitnesClubEntities context = new FitnesClubEntities();
+        
+        public static void OnlyNumber(TextCompositionEventArgs e)
+        {
+            if (!Int32.TryParse(e.Text, out int res))
+            {
+                e.Handled = true;
+            }
+        }
+        /// <summary>
+        /// Позволяет вводить в текстовое поле только буквы 
+        /// </summary>
+        /// <param name="e"></param>
+        public static void OnlyLetter(TextCompositionEventArgs e)
+        {
+            if (Int32.TryParse(e.Text, out int res))
+            {
+                e.Handled = true;
+            }
+        }
+
         /// <summary>
         /// Выводит диалоговое окно с информацией
         /// </summary>
@@ -45,5 +67,7 @@ namespace FitnesClub.ViewModel.Helper
         {
             return MessageBox.Show(message, title , MessageBoxButton.YesNo , MessageBoxImage.Question);
         }
+
+
     }
 }

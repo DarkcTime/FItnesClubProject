@@ -20,8 +20,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Margin="27 20 27 20" Command="{Binding Path=LoginCommand}" >Войти</Button>
-            <Button Margin="27 20 27 20" Grid.Column="1" Command="{Binding Path=ExitCommand}">Закрыть</Button>
+            <Button Style="{StaticResource StyleButtonBlue}" Command="{Binding Path=LoginCommand}" >Войти</Button>
+            <Button Grid.Column="1" Command="{Binding Path=ExitCommand}">Закрыть</Button>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -35,11 +35,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Логин"></TextBlock>
-            <TextBox Grid.Column="1" Margin="20 40 20 40" MaxLength="15" Text="{Binding Path=Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Grid.Column="1" MaxLength="15" Text="{Binding Path=Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock Text="Пароль" Grid.Row="1" ></TextBlock>
-            <TextBox Grid.Column="1" Grid.Row="1" MaxLength="15" Margin="20 40 20 40" Text="{Binding Path=Password, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <CheckBox Grid.Row="2" Grid.Column="1" Content="Запомнить меня" Margin="20 10 0 0" IsChecked="{Binding Path=IsCheckedMemberMe, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
-            <Label Grid.Row="3" Grid.Column="1" Margin="15 0 0 0">
+            <TextBox Grid.Column="1" Grid.Row="1" MaxLength="15" Text="{Binding Path=Password, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <CheckBox Grid.Row="2" Grid.Column="1" Content="Запомнить меня" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Path=IsCheckedMemberMe, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+            <Label Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Label.Content>
                     <Button  Content="Зарегистрироваться"  Foreground="#FF1842D3" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding RegistrationCommand}"></Button>
                 </Label.Content>

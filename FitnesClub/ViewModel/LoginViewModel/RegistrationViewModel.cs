@@ -10,9 +10,8 @@ using System.Windows.Input;
 
 namespace FitnesClub.ViewModel.LoginViewModel
 {
-    class RegistrationViewModel : ViewModelProp
+    class RegistrationViewModel : HelperDialogWindows
     {
-        FitnesClubEntities context = new FitnesClubEntities();
 
         private string firtsNameClient, middleNameClient, lastNameClient, emailClient, loginClient, passwordClient;
 
@@ -88,10 +87,6 @@ namespace FitnesClub.ViewModel.LoginViewModel
             }
         }
         public ICommand RegistrationCommand { get; set; }
-
-        public Action CloseWindow { get; set; }
-
-        public Action PrewievTextInput { get; set; }
        
         public RegistrationViewModel()
         {
@@ -118,9 +113,7 @@ namespace FitnesClub.ViewModel.LoginViewModel
                     type_user_id = 4
                 };
                 context.users.Add(User);
-                context.SaveChanges();
 
-                var UserAndClient = context.users.Max(i => i.id_user);
 
                 clients Client = new clients()
                 {
@@ -129,18 +122,15 @@ namespace FitnesClub.ViewModel.LoginViewModel
                     LastName = LastNameClient,
                     age = AgeClient,
                     Email = emailClient,
-                    account_id = UserAndClient
+                    account_id = User.id_user
                 };
                 context.clients.Add(Client);
-                context.SaveChanges();
-
-                MessageBox.Show("Вы  зарегистрировались как клиент", "Успешная регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.CloseWindow();
+                context.SaveChanges();               
+                Helper.HelperDialogWindows.DialogResult();
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message, ex.HelpLink, MessageBoxButton.OK, MessageBoxImage.Error);
+                this.MessageBoxError(ex);
             }
           
             

@@ -24,33 +24,23 @@ namespace FitnesClub.View.Login
         public Registration()
         {
             InitializeComponent();
-            RegistrationViewModel vm = new RegistrationViewModel();
-            DataContext = vm;
-            vm.CloseWindow = new Action(() => this.Close());
+            DataContext = new ViewModel.LoginViewModel.RegistrationViewModel();
+            HelperDialogWindows.DialogResult = new Action(() => this.DialogResult = true);
         }
 
         private void TextBox_PreviewTextInputFirstName(object sender, TextCompositionEventArgs e)
         {
-            if (Int32.TryParse(e.Text, out int res))
-            {
-                e.Handled = true;
-            }
+            ViewModel.Helper.Helper.OnlyLetter(e);
         }
 
         private void TextBox_PreviewTextInputMiddleName(object sender, TextCompositionEventArgs e)
         {
-            if (Int32.TryParse(e.Text, out int res))
-            {
-                e.Handled = true;
-            }
+            ViewModel.Helper.Helper.OnlyLetter(e);
         }
 
         private void TextBox_PreviewTextInputLastName(object sender, TextCompositionEventArgs e)
         {
-            if (Int32.TryParse(e.Text, out int res))
-            {
-                e.Handled = true;
-            }
+            ViewModel.Helper.Helper.OnlyLetter(e);
         }
     }
 }

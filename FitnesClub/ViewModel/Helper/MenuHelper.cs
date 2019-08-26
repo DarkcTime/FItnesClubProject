@@ -7,12 +7,15 @@ using System.Windows;
 
 namespace FitnesClub.ViewModel.Helper
 {
-    class MenuHeplper 
+    class MenuHelper : Helper 
     {
-
-        public static void ApplicationShutDown()
+        public static Action CloseWindow;
+        /// <summary>
+        /// Закрывает приложение после потверждения
+        /// </summary>
+        protected void ApplicationShutDown()
         {
-            var answer = MessageBox.Show("Закрыть приложение", "Выход",MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var answer = this.MessageBoxQuestion("Закрывать приложение", "Выход");
             if(answer == MessageBoxResult.Yes)
             {
                 Application.Current.Shutdown();
@@ -23,21 +26,26 @@ namespace FitnesClub.ViewModel.Helper
             }
 
         }
-
-        public static bool GoToTheLoginWindow()
+        /// <summary>
+        /// Закрывает окно меню и переходит в окно авторизации
+        /// </summary>
+        protected void GoToTheLoginWindow()
         {
             var answer = MessageBox.Show("Перейти в окно авторизации", "Сменить пользователя", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (answer == MessageBoxResult.Yes)
             {
-                return true;
+                this.ShowLoginWindow();
+                CloseWindow();
             }
             else
             {
-                return false;
+                return;
             }
         }
-
-        public static void ShowLoginWindow()
+        /// <summary>
+        /// Открывает окно авторизации
+        /// </summary>
+        private void ShowLoginWindow()
         {
             View.LoginView.Authorization authorization = new View.LoginView.Authorization();
             authorization.Show();

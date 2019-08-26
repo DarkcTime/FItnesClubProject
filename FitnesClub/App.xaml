@@ -21,6 +21,11 @@
             <Setter Property="Width" Value="120"/>
             <Setter Property="Height" Value="30"/>
         </Style>
+        <Style x:Key="StyleButtonBlue" TargetType="Button" BasedOn="{StaticResource StandartStyle}">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="#FF2CA3F5"/>
+        </Style>
         <Style TargetType="TextBox" BasedOn="{StaticResource StandartStyle}">
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="20"/>

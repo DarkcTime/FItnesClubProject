@@ -22,11 +22,8 @@ namespace FitnesClub.View.LoginView
         public Authorization()
         {
             InitializeComponent();
-            ViewModel.LoginViewModel.AuthorizationViewModel authorizationViewModel = new ViewModel.LoginViewModel.AuthorizationViewModel();
-            this.DataContext = authorizationViewModel;
-
-            authorizationViewModel.CloseAction = new Action(() => this.Close());
-            
+            DataContext = new ViewModel.LoginViewModel.AuthorizationViewModel();
+            ViewModel.Helper.HelperLogin.CloseWindow = new Action(() => this.Close());
         }
 
         

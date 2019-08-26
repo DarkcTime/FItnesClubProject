@@ -14,9 +14,8 @@ using System.Windows.Input;
 
 namespace FitnesClub.ViewModel.LoginViewModel
 {
-    class AuthorizationViewModel : ViewModelProp
+    class AuthorizationViewModel : Helper.HelperLogin
     {
-        FitnesClubEntities context = new FitnesClubEntities();
 
         private string login, password; 
 
@@ -60,14 +59,17 @@ namespace FitnesClub.ViewModel.LoginViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,ex.HelpLink,MessageBoxButton.OK , MessageBoxImage.Error);
+                this.MessageBoxError(ex);
             }
         }
 
         private void RegistrationCommandClick(object obj)
         {
             Registration registrationWindow = new Registration();
-            registrationWindow.ShowDialog();            
+            if(registrationWindow.ShowDialog() == true)
+            {
+                this.MessageBoxInformation("Вы успешно зарегистрировались как клиент");
+            }            
         }
 
         private bool CanLoginCommandClick(object arg)
@@ -89,6 +91,7 @@ namespace FitnesClub.ViewModel.LoginViewModel
         {
             using (StreamWriter sw = new StreamWriter("Member.txt", false, Encoding.UTF8))
             {
+
             }
         }
         private void ReadMemberMe()
@@ -147,8 +150,8 @@ namespace FitnesClub.ViewModel.LoginViewModel
                     {
                         MessageBox.Show("Ошибка входа");
                     }
-                    
-                    CloseAction();
+
+                    Helper.HelperLogin.CloseWindow();
                 }
                 else
                 {

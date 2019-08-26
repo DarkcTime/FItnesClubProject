@@ -10,10 +10,8 @@ using System.Windows.Input;
 
 namespace FitnesClub.ViewModel.MainMenuViewModel
 {
-    class MainMenuAdministratorViewModel : ViewModelProp
-    { 
-
-        public static Action CloseThisWindow { get;set; }
+    class MainMenuAdministratorViewModel : MenuHelper
+    {       
 
         private Page currentPage;
         public Page CurrentPage
@@ -35,38 +33,58 @@ namespace FitnesClub.ViewModel.MainMenuViewModel
         public ICommand ExitCommand { get; set; }
         public MainMenuAdministratorViewModel()
         {
+            try
+            {
+                CosmeticServicesCommand = new Command(CosmeticServicesCommandClick);
+                SubscribesCommand = new Command(SubscribesCommandClick);
+                ListEventsCommand = new Command(ListEventsCommandClick);
+                ListRecordsCommand = new Command(ListRecordsCommandClick);
+                ClientCommand = new Command(ClientCommandClick);
 
-            CosmeticServicesCommand = new Command(CosmeticServicesCommandClick);
-            SubscribesCommand = new Command(SubscribesCommandClick);
-            ListEventsCommand = new Command(ListEventsCommandClick);
-            ListRecordsCommand = new Command(ListRecordsCommandClick);
-            ClientCommand = new Command(ClientCommandClick);
+                ChangeUserCommand = new Command(ChangeUserCommandClick);
+                ExitCommand = new Command(ExitCommandClick);
+    }
+            catch (Exception ex)
+            {
+                this.MessageBoxError(ex);
+            }
+            
+        }
+
+        private void ExitCommandClick(object obj)
+        {
+            this.ApplicationShutDown();
+        }
+
+        private void ChangeUserCommandClick(object obj)
+        {
+            this.GoToTheLoginWindow();
         }
 
         private void CosmeticServicesCommandClick(object obj)
         {
-            CurrentPage = new View.Administrator.CosmeticServices.CosmeticServicesPage();
+            this.CurrentPage = new View.Administrator.CosmeticServices.CosmeticServicesPage();
         }
 
         private void SubscribesCommandClick(object obj)
         {
-            CurrentPage = new View.Administrator.Subscriptions.SubscriprionsPage();
+            this.CurrentPage = new View.Administrator.Subscriptions.SubscriprionsPage();
         }
 
         private void ListRecordsCommandClick(object obj)
         {
-            CurrentPage = new View.Administrator.ListRecords.ListRecordsPage();
+            this.CurrentPage = new View.Administrator.ListRecords.ListRecordsPage();
         }
 
         private void ClientCommandClick(object obj)
         {
-            CurrentPage = new View.Administrator.Clients.ListClientsPage();
+            this.CurrentPage = new View.Administrator.Clients.ListClientsPage();
         }
 
         private void ListEventsCommandClick(object obj)
         {
 
-            CurrentPage = new View.Administrator.ListEventsPage.ListEventsPageMenu();
+            this.CurrentPage = new View.Administrator.ListEventsPage.ListEventsPageMenu();
             
         }
     }
