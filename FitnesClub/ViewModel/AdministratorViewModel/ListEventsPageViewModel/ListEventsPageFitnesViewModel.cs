@@ -13,9 +13,12 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ListEventsPageViewModel
     class ListEventsPageFitnesViewModel : EventsHepler
     {
       
+       
         public List<Model.amenities> ListEventsFitnes { get; set; }
 
         private Model.amenities selectedEventFitnes;
+
+
         public Model.amenities SelectedEventFitnes
         {
             get
@@ -38,34 +41,29 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ListEventsPageViewModel
         {
             try
             {
-                }
+                this.ListEventsFitnes = this.UpLoadData(1);
+
+                this.RecordingCommand = new Command(RecordingCommandClick, CanRecordingCommand);
+                this.TogetherChangeCommand = new Command(TogetherChangeCommandClick, CanTogetherChange);
+            }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, ex.HelpLink , MessageBoxButton.OK , MessageBoxImage.Error);
             }
-            this.ListEventsFitnes = this.UpLoadData(1);
-
-            this.RecordingCommand = new Command(RecordingCommandClick, CanRecordingCommand);
-            this.TogetherChangeCommand = new Command(TogetherChangeCommandClick, CanTogetherChange);
-
-
+            
         }
 
         private void RecordingCommandClick(object obj)
         {
             try
             {
-                var page = new View.Administrator.ListEventsPage.DialogWindowListEvents.DialogWindowRecordClient();
-                DialogWindowListEventsViewModel.DialogWindowRecordClientViewModel.CurrentEvent = this.SelectedEventFitnes;
-                if (page.ShowDialog() == true)
-                {
-                    MessageBox.Show("Клиент записан на тренировку", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                this.RecordClientOnTraining(this.selectedEventFitnes);
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ex.HelpLink, MessageBoxButton.OK, MessageBoxImage.Error);
+                this.MessageBoxError(ex);        
             }
             
         }

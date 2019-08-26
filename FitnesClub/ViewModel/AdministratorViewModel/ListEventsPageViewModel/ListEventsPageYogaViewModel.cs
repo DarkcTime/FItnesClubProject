@@ -38,6 +38,10 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ListEventsPageViewModel
             try
             {
 
+                this.ListEventsYoga = this.UpLoadData(4);
+
+                this.RecordingCommand = new Command(RecordingCommandClick, CanRecordingCommand);
+                this.TogetherChangeCommand = new Command(TogetherChangeCommandClick, CanTogetherChange);
             }
             catch (Exception ex)
             {
@@ -45,17 +49,13 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ListEventsPageViewModel
                 MessageBox.Show(ex.Message, ex.HelpLink, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            this.ListEventsYoga = this.UpLoadData(4);
-
-            this.RecordingCommand = new Command(RecordingCommandClick, CanRecordingCommand);
-            this.TogetherChangeCommand = new Command(TogetherChangeCommandClick, CanTogetherChange);
         }
 
 
 
         private void RecordingCommandClick(object obj)
         {
-            throw new NotImplementedException();
+            this.RecordClientOnTraining(this.selectedEventYoga);
         }
         private void TogetherChangeCommandClick(object obj)
         {

@@ -23,10 +23,7 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.DialogWindowsViewModel
                 OnPropertyChanged();
             }
         }
-
         
-        public static Action CloseWindow { get; set; }
-
         public ICommand SelectClientCommand { get; set; }
 
         public DialogWindowSelectOldClientViewModel()
@@ -53,8 +50,8 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.DialogWindowsViewModel
 
         private void SelectClientCommandClick(object obj)
         {
-            FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel.SubsctiprionsPageViewModel.OldClient = this.selectedClient;   
-            CloseWindow();
+            Helper.HelperDialogWindows.SelectedClientOld = this.SelectedClient;
+            Helper.HelperDialogWindows.DialogResult();            
         }
     }
 }

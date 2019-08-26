@@ -8,9 +8,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="445" d:DesignWidth="600"
       Title="ListEventsPageFitnes">
-    <Page.DataContext>
-        <vm:ListEventsPageFitnesViewModel></vm:ListEventsPageFitnesViewModel>
-    </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.10*"/>
@@ -45,17 +42,17 @@
                     <TextBlock>День</TextBlock>
                     <TextBlock Grid.Row="1" >Время</TextBlock>
                     <TextBlock Grid.Row="2" >Название</TextBlock>
-                    <TextBox Grid.Row="2" Grid.Column="1" FontSize="10" IsReadOnly="True" Text="{Binding Path=SelectedEventFitnes.name_service.name_ser, UpdateSourceTrigger=PropertyChanged}" Margin="40 5 40 5" TextWrapping="Wrap"></TextBox>
-                    <TextBox Grid.Row="0"  Grid.Column="1" IsReadOnly="True" Text="{Binding Path=SelectedEventFitnes.day.name}" Margin="40 5 40 5" TextWrapping="Wrap"></TextBox>
-                    <TextBox Grid.Row="1"  Grid.Column="1" IsReadOnly="True" Text="{Binding Path=SelectedEventFitnes.time.times}" Margin="40 5 40 5" TextWrapping="Wrap"></TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="1" FontSize="10" IsReadOnly="True" Text="{Binding Path=SelectedEventFitnes.name_service.name_ser, UpdateSourceTrigger=PropertyChanged}" Height="35" TextWrapping="Wrap"></TextBox>
+                    <TextBox Grid.Row="0"  Grid.Column="1" IsReadOnly="True" Text="{Binding Path=SelectedEventFitnes.day.name}"  TextWrapping="Wrap"></TextBox>
+                    <TextBox Grid.Row="1"  Grid.Column="1" IsReadOnly="True" Text="{Binding Path=SelectedEventFitnes.time.times}" TextWrapping="Wrap"></TextBox>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Button Margin="15" Command="{Binding Path=RecordingCommand}">Записать</Button>
-                    <Button Margin="15" Grid.Row="1" Command="{Binding Path=TogetherChangeCommand}">Согласовать</Button>
+                    <Button  Command="{Binding Path=RecordingCommand}">Записать</Button>
+                    <Button  Grid.Row="1" Command="{Binding Path=TogetherChangeCommand}">Согласовать</Button>
                 </Grid>
                 
             </Grid>

@@ -4,13 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FitnesClub.View.Administrator.ListEventsPage"
-      xmlns:vm="clr-namespace:FitnesClub.ViewModel.AdministratorViewModel.ListEventsPageViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="495" d:DesignWidth="600"
       Title="ListEventsPageMenu">
-    <Page.DataContext>
-        <vm:ListEventsPageMenuViewModel></vm:ListEventsPageMenuViewModel>
-    </Page.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.10*"/>
@@ -24,7 +21,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Command="{Binding Path=FitnesCommand}">Фитнес зал</Button>
-            <Button Grid.Column="1" Command="{Binding Path=DanceCommand}">Хореографический зал</Button>
+            <Button Grid.Column="1" Command="{Binding Path=DanceCommand}" FontSize="10">Хореографический зал</Button>
             <Button Grid.Column="2" Command="{Binding Path=IronCommand}">Железный зал</Button>
             <Button Grid.Column="3" Command="{Binding Path=YogaCommand}">Йога Студия</Button>
         </Grid>

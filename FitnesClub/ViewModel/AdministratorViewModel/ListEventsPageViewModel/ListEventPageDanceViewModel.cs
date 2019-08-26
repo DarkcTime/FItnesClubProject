@@ -57,7 +57,14 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ListEventsPageViewModel
        
         private void RecordingCommandClick(object obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.RecordClientOnTraining(this.selectedEventDance);
+            }
+            catch (Exception ex)
+            {
+                this.MessageBoxError(ex);
+            }
         }
         private void TogetherChangeCommandClick(object obj)
         {

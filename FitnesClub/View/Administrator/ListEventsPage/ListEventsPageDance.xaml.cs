@@ -23,6 +23,7 @@ namespace FitnesClub.View.Administrator.ListEventsPage
         public ListEventsPageDance()
         {
             InitializeComponent();
+            DataContext = new ViewModel.AdministratorViewModel.ListEventsPageViewModel.ListEventPageDanceViewModel();
         }
     }
 }
