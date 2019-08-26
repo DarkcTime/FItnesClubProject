@@ -24,6 +24,7 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.DialogWindowsViewModel
             }
         }
 
+        
         public static Action CloseWindow { get; set; }
 
         public ICommand SelectClientCommand { get; set; }

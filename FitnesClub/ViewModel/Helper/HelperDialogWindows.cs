@@ -8,5 +8,8 @@ namespace FitnesClub.ViewModel.Helper
 {
     class HelperDialogWindows : Helper
     {
+        public static string CurrentPage { get; set; }
+
+        public static Action DialogResult { get; set; }
     }
 }

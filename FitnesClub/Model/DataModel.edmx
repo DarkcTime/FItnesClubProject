@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище FitnesClubModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище FitnesClubModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="amenities">
           <Key>
             <PropertyRef Name="id_servise" />
@@ -22,6 +22,7 @@
           </Key>
           <Property Name="id_service" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="beauty_servise_list">
           <Key>
@@ -30,7 +31,7 @@
           <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="client_id" Type="int" Nullable="false" />
           <Property Name="service_beaty_id" Type="int" Nullable="false" />
-          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="date_buy" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="buy">
           <Key>
@@ -460,8 +461,7 @@
             <End Role="users" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FitnesClubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -489,6 +489,7 @@
           <Property Name="id_service" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="beauty_servise_list" Relationship="Self.FK_beauty_servise_list_beauty_services" FromRole="beauty_services" ToRole="beauty_servise_list" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="beauty_servise_list">
           <Key>
@@ -497,9 +498,9 @@
           <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="client_id" Type="Int32" Nullable="false" />
           <Property Name="service_beaty_id" Type="Int32" Nullable="false" />
-          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <NavigationProperty Name="beauty_services" Relationship="Self.FK_beauty_servise_list_beauty_services" FromRole="beauty_servise_list" ToRole="beauty_services" />
           <NavigationProperty Name="clients" Relationship="Self.FK_beauty_servise_list_clients" FromRole="beauty_servise_list" ToRole="clients" />
+          <Property Name="date_buy" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="buy">
           <Key>
@@ -975,6 +976,7 @@
           <EntitySetMapping Name="beauty_services">
             <EntityTypeMapping TypeName="FitnesClubModel.beauty_services">
               <MappingFragment StoreEntitySet="beauty_services">
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="id_service" ColumnName="id_service" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -983,10 +985,10 @@
           <EntitySetMapping Name="beauty_servise_list">
             <EntityTypeMapping TypeName="FitnesClubModel.beauty_servise_list">
               <MappingFragment StoreEntitySet="beauty_servise_list">
+                <ScalarProperty Name="date_buy" ColumnName="date_buy" />
                 <ScalarProperty Name="id_service" ColumnName="id_service" />
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="service_beaty_id" ColumnName="service_beaty_id" />
-                <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

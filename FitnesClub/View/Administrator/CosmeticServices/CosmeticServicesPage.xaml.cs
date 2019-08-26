@@ -10,25 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FitnesClub.View.Administrator.DialogWindows
+namespace FitnesClub.View.Administrator.CosmeticServices
 {
     /// <summary>
-    /// Логика взаимодействия для DialogWindowSelectOldClient.xaml
+    /// Логика взаимодействия для CosmeticServicesPage.xaml
     /// </summary>
-    public partial class DialogWindowSelectOldClient : Window
+    public partial class CosmeticServicesPage : Page
     {
-        public DialogWindowSelectOldClient()
+        public CosmeticServicesPage()
         {
             InitializeComponent();
-            DataContext = new ViewModel.AdministratorViewModel.DialogWindowsViewModel.DialogWindowSelectOldClientViewModel();
-            ViewModel.Helper.HelperDialogWindows.DialogResult = new Action(() => this.DialogResult = true);
+            DataContext = new ViewModel.AdministratorViewModel.CosmeticServicesViewModel.CosmeticServicesPageViewModel();
         }
 
         private void TextBlock_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.PopupListClient.IsOpen = true;
+            this.PopupService.IsOpen = true;
         }
     }
 }

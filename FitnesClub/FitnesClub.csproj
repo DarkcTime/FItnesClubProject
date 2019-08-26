@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="ViewModel\AdministratorViewModel\ClientsViewModel\DialogAddClientViewModel.cs" />
     <Compile Include="ViewModel\AdministratorViewModel\ClientsViewModel\ListClientsPageViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\CosmeticServicesViewModel\CosmeticServicesPageViewModel.cs" />
     <Compile Include="ViewModel\AdministratorViewModel\DialogWindowsViewModel\DialogWindowSelectNewClientViewModel.cs" />
     <Compile Include="ViewModel\AdministratorViewModel\DialogWindowsViewModel\DialogWindowSelectOldClientViewModel.cs" />
     <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\DialogWindowListEventsViewModel\DialogWindowRecordClientViewModel.cs" />
@@ -162,6 +163,9 @@
     </Compile>
     <Compile Include="View\Administrator\Clients\ListClientsPage.xaml.cs">
       <DependentUpon>ListClientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\CosmeticServices\CosmeticServicesPage.xaml.cs">
+      <DependentUpon>CosmeticServicesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Administrator\DialogWindows\DialogWindowSelectNewClient.xaml.cs">
       <DependentUpon>DialogWindowSelectNewClient.xaml</DependentUpon>
@@ -220,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Administrator\Clients\ListClientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\CosmeticServices\CosmeticServicesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

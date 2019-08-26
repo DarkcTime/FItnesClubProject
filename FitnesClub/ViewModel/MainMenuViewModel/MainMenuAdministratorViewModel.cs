@@ -27,7 +27,7 @@ namespace FitnesClub.ViewModel.MainMenuViewModel
         }
         public ICommand ListEventsCommand { get; set; }
         public ICommand SubscribesCommand { get; set; }
-        public ICommand BeatyServicesCommand { get; set; }
+        public ICommand CosmeticServicesCommand { get; set; }
         public ICommand ClientCommand { get; set; }
         public ICommand ListRecordsCommand { get; set; }
 
@@ -36,10 +36,16 @@ namespace FitnesClub.ViewModel.MainMenuViewModel
         public MainMenuAdministratorViewModel()
         {
 
+            CosmeticServicesCommand = new Command(CosmeticServicesCommandClick);
             SubscribesCommand = new Command(SubscribesCommandClick);
             ListEventsCommand = new Command(ListEventsCommandClick);
             ListRecordsCommand = new Command(ListRecordsCommandClick);
             ClientCommand = new Command(ClientCommandClick);
+        }
+
+        private void CosmeticServicesCommandClick(object obj)
+        {
+            CurrentPage = new View.Administrator.CosmeticServices.CosmeticServicesPage();
         }
 
         private void SubscribesCommandClick(object obj)

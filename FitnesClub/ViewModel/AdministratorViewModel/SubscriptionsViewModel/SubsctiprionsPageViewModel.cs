@@ -90,7 +90,7 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
             try
             {
                 this.UpLoadData();
-                NewClientCommand = new Command(NewClientCommandClick);
+                this.NewClientCommand = new Command(NewClientCommandClick);
                 this.OldClientCommand = new Command(OldClientCommandClick);
                 this.PayCommand = new Command(PayCommandClick, CanPayCommand);
             }
@@ -115,7 +115,33 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
 
         private void PayCommandClick(object obj)
         {
-            throw new NotImplementedException();
+            Model.buy buy;
+            if (OldClient != null && this.FirstName == OldClient.FirstName)
+            {
+                buy = new Model.buy()
+                {
+                    client_id = OldClient.id_client,
+                    subsribe_id = this.selectedSubscribe.id_subscribe,
+                    discont_id = this.selectedDiscont.id_discont,
+                    date_buy = DateTime.Now
+                };             
+            }
+            else
+            {
+                this.context.clients.Add(NewClient);
+                buy = new Model.buy()
+                {
+                    client_id = NewClient.id_client,
+                    subsribe_id = this.selectedSubscribe.id_subscribe,
+                    discont_id = this.selectedDiscont.id_discont,
+                    date_buy = DateTime.Now
+                };
+            }
+            this.context.buy.Add(buy);
+            this.context.SaveChanges();
+            MessageBoxInformation("Данные добавлены в лист покупок");
+            this.FirstName = "";
+            this.MiddleName = "";
         }
 
         private void OldClientCommandClick(object obj)
@@ -123,24 +149,21 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.SubscriptionsViewModel
             View.Administrator.DialogWindows.DialogWindowSelectOldClient dialogWindowSelectOldClient = new View.Administrator.DialogWindows.DialogWindowSelectOldClient();
             if(dialogWindowSelectOldClient.ShowDialog() == true)
             {
-                Model.buy buy = new Model.buy()
-                {
-                    client_id = NewClient.id_client,
-                    subsribe_id = this.selectedSubscribe.id_subscribe,
-                    discont_id = this.selectedDiscont.id_discont,
-                    date_buy = DateTime.Now
-                };
-                this.context.buy.Add(buy);
-                this.context.SaveChanges();
-                MessageBoxInformation("Данные добавлены в лист покупок");
+                this.FirstName = OldClient.FirstName;
+                this.MiddleName = OldClient.MiddleName;
             }
         }
 
         private void NewClientCommandClick(object obj)
         {
-            throw new NotImplementedException();
+            View.Administrator.DialogWindows.DialogWindowSelectNewClient dialogWindowSelectNewClient = new View.Administrator.DialogWindows.DialogWindowSelectNewClient();
+            if (dialogWindowSelectNewClient.ShowDialog() == true)
+            {
+                this.FirstName = NewClient.FirstName;
+                this.MiddleName = NewClient.MiddleName;
+            }
         }
 
-        
+
     }
 }

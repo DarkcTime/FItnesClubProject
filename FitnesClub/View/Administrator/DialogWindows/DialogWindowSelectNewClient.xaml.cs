@@ -22,6 +22,8 @@ namespace FitnesClub.View.Administrator.DialogWindows
         public DialogWindowSelectNewClient()
         {
             InitializeComponent();
+            DataContext = new ViewModel.AdministratorViewModel.DialogWindowsViewModel.DialogWindowSelectNewClientViewModel();
+            ViewModel.Helper.HelperDialogWindows.DialogResult = new Action(() => this.DialogResult = true);
         }
     }
     

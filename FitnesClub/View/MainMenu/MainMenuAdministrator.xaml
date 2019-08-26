@@ -7,9 +7,7 @@
         xmlns:vm="clr-namespace:FitnesClub.ViewModel.MainMenuViewModel"
         mc:Ignorable="d"
         Title="MainMenuAdministrator" Height="550" Width="800">
-    <Window.DataContext>
-        <vm:MainMenuAdministratorViewModel/>
-    </Window.DataContext>
+
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.25*"/>
@@ -43,7 +41,7 @@
                 </Grid.RowDefinitions>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Command="{Binding Path=ListEventsCommand}">Расписание</Button>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Grid.Row="2" Command="{Binding Path=SubscribesCommand}">Абонементы</Button>
-                <Button Style="{StaticResource StyleButtonMainMenu}" Grid.Row="3" Command="{Binding Path=BeatyServicesCommand}">Косметические услуги</Button>
+                <Button Style="{StaticResource StyleButtonMainMenu}" Grid.Row="3" Command="{Binding Path=CosmeticServicesCommand}">Косметические услуги</Button>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Command="{Binding Path=ClientCommand}" Grid.Row="4">Клиенты</Button>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Command="{Binding Path=ListRecordsCommand}" Grid.Row="1">Лист записи</Button>
             </Grid>

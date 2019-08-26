@@ -23,6 +23,7 @@ namespace FitnesClub.View.MainMenu
         {
             InitializeComponent();
             ViewModel.MainMenuViewModel.MainMenuAdministratorViewModel.CloseThisWindow = new Action(() => this.Close());
+            DataContext = new ViewModel.MainMenuViewModel.MainMenuAdministratorViewModel();
         }
     }
 }
