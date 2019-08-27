@@ -146,6 +146,8 @@
     <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\ListEventsPageMenuViewModel.cs" />
     <Compile Include="ViewModel\AdministratorViewModel\ListEventsPageViewModel\ListEventsPageYogaViewModel.cs" />
     <Compile Include="ViewModel\AdministratorViewModel\LIstRecordsViewModel\ListRecordsPageViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\LIstSalesViewModel\ListSalesPageViewModel.cs" />
+    <Compile Include="ViewModel\AdministratorViewModel\LIstSalesViewModel\NewSales.cs" />
     <Compile Include="ViewModel\AdministratorViewModel\SubscriptionsViewModel\SubsctiprionsPageViewModel.cs" />
     <Compile Include="ViewModel\Helper\Command.cs" />
     <Compile Include="ViewModel\Helper\EventsHepler.cs" />
@@ -186,6 +188,9 @@
     </Compile>
     <Compile Include="View\Administrator\ListRecords\ListRecordsPage.xaml.cs">
       <DependentUpon>ListRecordsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administrator\ListSales\LIstSalesPage.xaml.cs">
+      <DependentUpon>LIstSalesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Administrator\Subscriptions\SubscriprionsPage.xaml.cs">
       <DependentUpon>SubscriprionsPage.xaml</DependentUpon>
@@ -249,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Administrator\ListRecords\ListRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administrator\ListSales\LIstSalesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

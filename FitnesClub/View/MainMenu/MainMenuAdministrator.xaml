@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnesClub.View.MainMenu"
         mc:Ignorable="d"
-        Title="Главное меню" Height="550" Width="800" Icon="/FitnesClub;component/Resourse/icon.png">
+        Title="Главное меню" MinHeight="400" MinWidth="450" Height="550" Width="800" Icon="/FitnesClub;component/Resourse/icon.png">
 
     <Grid >
         <Grid.ColumnDefinitions>
@@ -37,12 +37,14 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Command="{Binding Path=ListEventsCommand}">Расписание</Button>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Grid.Row="2" Command="{Binding Path=SubscribesCommand}">Абонементы</Button>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Grid.Row="3" Command="{Binding Path=CosmeticServicesCommand}">Косметические услуги</Button>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Command="{Binding Path=ClientCommand}" Grid.Row="4">Клиенты</Button>
                 <Button Style="{StaticResource StyleButtonMainMenu}" Command="{Binding Path=ListRecordsCommand}" Grid.Row="1">Лист записи</Button>
+                <Button Style="{StaticResource StyleButtonMainMenu}" Command="{Binding Path=ListSalesCommand}" Grid.Row="5">Лист покупок</Button>
             </Grid>
             <Grid Grid.Row="3">
                 <Grid.RowDefinitions>

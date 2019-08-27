@@ -1,0 +1,37 @@
+﻿<Page x:Class="FitnesClub.View.Administrator.ListSales.LIstSalesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FitnesClub.View.Administrator.ListSales"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="LIstSalesPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.20*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock>Лист продаж</TextBlock>
+        <ListView Grid.Row="1" ItemsSource="{Binding Path=ListSales}"> 
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=name}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Клиент" DisplayMemberBinding="{Binding Path=clientFirstName}"></GridViewColumn>
+                    <GridViewColumn Header="тип" DisplayMemberBinding="{Binding Path=type}"></GridViewColumn>
+                    <GridViewColumn Header="скидка" DisplayMemberBinding="{Binding Path=discont}"></GridViewColumn>
+                    <GridViewColumn Header="цена" DisplayMemberBinding="{Binding Path=price}"></GridViewColumn>
+                    <GridViewColumn Header="сумма" DisplayMemberBinding="{Binding Path=сумма}"></GridViewColumn>
+                </GridView>    
+            </ListView.View>
+        </ListView>
+       
+    </Grid>
+</Page>

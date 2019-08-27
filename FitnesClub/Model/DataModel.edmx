@@ -265,7 +265,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_beauty_servise_list_clients">
-          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="clients" Type="Self.clients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="beauty_servise_list" Type="Self.beauty_servise_list" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="clients">
@@ -277,7 +279,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_buy_clients">
-          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="clients" Type="Self.clients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="buy" Type="Self.buy" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="clients">
@@ -313,7 +317,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_clients_users">
-          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="clients" Type="Self.clients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
@@ -337,7 +343,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_exercise_clients">
-          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="clients" Type="Self.clients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="exercise" Type="Self.exercise" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="clients">

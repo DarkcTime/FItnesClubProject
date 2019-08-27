@@ -50,8 +50,8 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Button  Command="{Binding Path=RecordingCommand}">Записать</Button>
-                    <Button Grid.Row="1" Command="{Binding Path=TogetherChangeCommand}">Согласовать</Button>
+                    <Button  Style="{StaticResource StyleButtonBlue}" Command="{Binding Path=RecordingCommand}">Записать</Button>
+                    
                 </Grid>
 
             </Grid>

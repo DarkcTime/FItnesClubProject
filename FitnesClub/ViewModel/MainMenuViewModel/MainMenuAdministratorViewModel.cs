@@ -29,6 +29,8 @@ namespace FitnesClub.ViewModel.MainMenuViewModel
         public ICommand ClientCommand { get; set; }
         public ICommand ListRecordsCommand { get; set; }
 
+        public ICommand ListSalesCommand { get; set; }
+
         public ICommand ChangeUserCommand { get; set; }
         public ICommand ExitCommand { get; set; }
         public MainMenuAdministratorViewModel()
@@ -40,6 +42,7 @@ namespace FitnesClub.ViewModel.MainMenuViewModel
                 ListEventsCommand = new Command(ListEventsCommandClick);
                 ListRecordsCommand = new Command(ListRecordsCommandClick);
                 ClientCommand = new Command(ClientCommandClick);
+                this.ListSalesCommand = new Command(ListSalesCommandClick);
 
                 ChangeUserCommand = new Command(ChangeUserCommandClick);
                 ExitCommand = new Command(ExitCommandClick);
@@ -49,6 +52,11 @@ namespace FitnesClub.ViewModel.MainMenuViewModel
                 this.MessageBoxError(ex);
             }
             
+        }
+
+        private void ListSalesCommandClick(object obj)
+        {
+            this.CurrentPage = new View.Administrator.ListSales.LIstSalesPage();
         }
 
         private void ExitCommandClick(object obj)

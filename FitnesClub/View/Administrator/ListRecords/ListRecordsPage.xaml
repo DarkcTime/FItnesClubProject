@@ -16,7 +16,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBlock>Лист записи</TextBlock>
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding Path=ListRecords , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid IsReadOnly="True" Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding Path=ListRecords , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Зал" Binding="{Binding Path=amenities.gym.name}"></DataGridTextColumn>
                 <DataGridTextColumn Width="*" Header="Тренировка" Binding="{Binding Path=amenities.name_service.name_ser}"></DataGridTextColumn>

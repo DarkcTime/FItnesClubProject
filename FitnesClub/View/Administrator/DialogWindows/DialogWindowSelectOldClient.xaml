@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FitnesClub.View.Administrator.DialogWindows"
         xmlns:vm="clr-namespace:FitnesClub.ViewModel.AdministratorViewModel.DialogWindowsViewModel"
         mc:Ignorable="d"
-        Title="Постоянный клиент" Height="450" Width="350" Icon="/FitnesClub;component/Resourse/icon.png"> 
+        Title="Постоянный клиент" Height="450" Width="350" ResizeMode="CanMinimize" Icon="/FitnesClub;component/Resourse/icon.png"> 
   
     <Grid>
         <Grid.RowDefinitions>

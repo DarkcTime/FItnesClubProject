@@ -14,8 +14,16 @@ namespace FitnesClub.ViewModel.AdministratorViewModel.ClientsViewModel
 {
     class ListClientsPageViewModel : Helper.Helper
     {
-
-        public ObservableCollection<clients> ListClients { get; set; }
+        private ObservableCollection<clients> listClients { get; set; }
+        public ObservableCollection<clients> ListClients
+        {
+            get => this.listClients;
+            set
+            {
+                this.listClients = value;
+                OnPropertyChanged();
+            }
+        }
 
         private clients selectedClient;
         public clients SelectedClient
