@@ -155,7 +155,7 @@ namespace FitnesClub.ViewModel.LoginViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Неверный логин или пароль", "ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Неверный логин или пароль", "ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }

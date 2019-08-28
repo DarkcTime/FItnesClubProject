@@ -13,10 +13,11 @@ namespace FitnesClub.ViewModel.Helper
     {
         protected FitnesClubEntities context = new FitnesClubEntities();
         
-        public static void OnlyNumber(TextCompositionEventArgs e)
+        public static void OnlyNumber(TextCompositionEventArgs e , string message)
         {
             if (!Int32.TryParse(e.Text, out int res))
             {
+                MessageBox.Show(message, "введен некоректный символ", MessageBoxButton.OK , MessageBoxImage.Warning);
                 e.Handled = true;
             }
         }
@@ -24,10 +25,11 @@ namespace FitnesClub.ViewModel.Helper
         /// Позволяет вводить в текстовое поле только буквы 
         /// </summary>
         /// <param name="e"></param>
-        public static void OnlyLetter(TextCompositionEventArgs e)
+        public static void OnlyLetter(TextCompositionEventArgs e, string message)
         {
             if (Int32.TryParse(e.Text, out int res))
             {
+                MessageBox.Show(message, "введен некоректный символ", MessageBoxButton.OK, MessageBoxImage.Warning);
                 e.Handled = true;
             }
         }

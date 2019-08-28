@@ -28,15 +28,15 @@ namespace FitnesClub.View.Administrator.DialogWindows
 
         private void TextBox_PreviewTextInputFirstName(object sender, TextCompositionEventArgs e)
         {
-            ViewModel.Helper.Helper.OnlyLetter(e);
+            ViewModel.Helper.Helper.OnlyLetter(e , "");
         }
         private void TextBox_PreviewTextInputMiddleName(object sender, TextCompositionEventArgs e)
         {
-            ViewModel.Helper.Helper.OnlyLetter(e);
+            ViewModel.Helper.Helper.OnlyLetter(e, "");
         }
         private void TextBox_PreviewTextInputLastName(object sender, TextCompositionEventArgs e)
         {
-            ViewModel.Helper.Helper.OnlyLetter(e);
+            ViewModel.Helper.Helper.OnlyLetter(e, "");
         }
     }
     

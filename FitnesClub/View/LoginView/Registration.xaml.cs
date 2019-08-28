@@ -30,17 +30,17 @@ namespace FitnesClub.View.Login
 
         private void TextBox_PreviewTextInputFirstName(object sender, TextCompositionEventArgs e)
         {
-            ViewModel.Helper.Helper.OnlyLetter(e);
+            ViewModel.Helper.Helper.OnlyLetter(e, "Поле имя может содержать только буквы");
         }
 
         private void TextBox_PreviewTextInputMiddleName(object sender, TextCompositionEventArgs e)
         {
-            ViewModel.Helper.Helper.OnlyLetter(e);
+            ViewModel.Helper.Helper.OnlyLetter(e, "Поле фамилия может содержать только буквы");
         }
 
         private void TextBox_PreviewTextInputLastName(object sender, TextCompositionEventArgs e)
         {
-            ViewModel.Helper.Helper.OnlyLetter(e);
+            ViewModel.Helper.Helper.OnlyLetter(e, "Поле отчество может содержать только буквы");
         }
     }
 }
