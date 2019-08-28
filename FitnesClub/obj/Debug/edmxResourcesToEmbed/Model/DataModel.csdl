@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FitnesClubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="amenities">
+    <Key>
+      <PropertyRef Name="id_servise" />
+    </Key>
+    <Property Name="id_servise" Type="Int32" Nullable="false" />
+    <Property Name="name_id" Type="Int32" Nullable="false" />
+    <Property Name="time_id" Type="Int32" Nullable="false" />
+    <Property Name="gym_id" Type="Int32" Nullable="false" />
+    <Property Name="day_id" Type="Int32" Nullable="false" />
+    <Property Name="employees_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="exercise" Relationship="Self.FK__exercise__servic__160F4887" FromRole="amenities" ToRole="exercise" />
+    <NavigationProperty Name="day" Relationship="Self.FK_amenities_day" FromRole="amenities" ToRole="day" />
+    <NavigationProperty Name="employees" Relationship="Self.FK_amenities_employees" FromRole="amenities" ToRole="employees" />
+    <NavigationProperty Name="gym" Relationship="Self.FK_amenities_gym" FromRole="amenities" ToRole="gym" />
+    <NavigationProperty Name="name_service" Relationship="Self.FK_amenities_name_service" FromRole="amenities" ToRole="name_service" />
+    <NavigationProperty Name="time" Relationship="Self.FK_amenities_time" FromRole="amenities" ToRole="time" />
+  </EntityType>
+  <EntityType Name="beauty_services">
+    <Key>
+      <PropertyRef Name="id_service" />
+    </Key>
+    <Property Name="id_service" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="beauty_servise_list" Relationship="Self.FK_beauty_servise_list_beauty_services" FromRole="beauty_services" ToRole="beauty_servise_list" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="beauty_servise_list">
+    <Key>
+      <PropertyRef Name="id_service" />
+    </Key>
+    <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="client_id" Type="Int32" Nullable="false" />
+    <Property Name="service_beaty_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="beauty_services" Relationship="Self.FK_beauty_servise_list_beauty_services" FromRole="beauty_servise_list" ToRole="beauty_services" />
+    <NavigationProperty Name="clients" Relationship="Self.FK_beauty_servise_list_clients" FromRole="beauty_servise_list" ToRole="clients" />
+    <Property Name="date_buy" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="buy">
+    <Key>
+      <PropertyRef Name="id_buy" />
+    </Key>
+    <Property Name="id_buy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="client_id" Type="Int32" Nullable="false" />
+    <Property Name="subsribe_id" Type="Int32" Nullable="false" />
+    <Property Name="discont_id" Type="Int32" Nullable="false" />
+    <Property Name="date_buy" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="clients" Relationship="Self.FK_buy_clients" FromRole="buy" ToRole="clients" />
+    <NavigationProperty Name="discont" Relationship="Self.FK_buy_discont" FromRole="buy" ToRole="discont" />
+    <NavigationProperty Name="subscribe" Relationship="Self.FK_buy_subscribe" FromRole="buy" ToRole="subscribe" />
+  </EntityType>
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="id_client" />
+    </Key>
+    <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="account_id" Type="Int32" />
+    <Property Name="age" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="beauty_servise_list" Relationship="Self.FK_beauty_servise_list_clients" FromRole="clients" ToRole="beauty_servise_list" />
+    <NavigationProperty Name="buy" Relationship="Self.FK_buy_clients" FromRole="clients" ToRole="buy" />
+    <NavigationProperty Name="users" Relationship="Self.FK_clients_users" FromRole="clients" ToRole="users" />
+    <NavigationProperty Name="exercise" Relationship="Self.FK_exercise_clients" FromRole="clients" ToRole="exercise" />
+  </EntityType>
+  <EntityType Name="day">
+    <Key>
+      <PropertyRef Name="id_day" />
+    </Key>
+    <Property Name="id_day" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="amenities" Relationship="Self.FK_amenities_day" FromRole="day" ToRole="amenities" />
+  </EntityType>
+  <EntityType Name="discont">
+    <Key>
+      <PropertyRef Name="id_discont" />
+    </Key>
+    <Property Name="id_discont" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <Property Name="criterion" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type_discont_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="buy" Relationship="Self.FK_buy_discont" FromRole="discont" ToRole="buy" />
+    <NavigationProperty Name="type_discont" Relationship="Self.FK_discont_type_discont" FromRole="discont" ToRole="type_discont" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="id_employees" />
+    </Key>
+    <Property Name="id_employees" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_user" Type="Int32" />
+    <NavigationProperty Name="amenities" Relationship="Self.FK_amenities_employees" FromRole="employees" ToRole="amenities" />
+  </EntityType>
+  <EntityType Name="exercise">
+    <Key>
+      <PropertyRef Name="id_exercise" />
+    </Key>
+    <Property Name="id_exercise" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="service_id" Type="Int32" Nullable="false" />
+    <Property Name="client_id" Type="Int32" Nullable="false" />
+    <Property Name="date_write" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="amenities" Relationship="Self.FK__exercise__servic__160F4887" FromRole="exercise" ToRole="amenities" />
+    <NavigationProperty Name="clients" Relationship="Self.FK_exercise_clients" FromRole="exercise" ToRole="clients" />
+  </EntityType>
+  <EntityType Name="gym">
+    <Key>
+      <PropertyRef Name="id_gym" />
+    </Key>
+    <Property Name="id_gym" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="amenities" Relationship="Self.FK_amenities_gym" FromRole="gym" ToRole="amenities" />
+  </EntityType>
+  <EntityType Name="name_service">
+    <Key>
+      <PropertyRef Name="id_name" />
+    </Key>
+    <Property Name="id_name" Type="Int32" Nullable="false" />
+    <Property Name="name_ser" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="amenities" Relationship="Self.FK_amenities_name_service" FromRole="name_service" ToRole="amenities" />
+  </EntityType>
+  <EntityType Name="period">
+    <Key>
+      <PropertyRef Name="id_period" />
+    </Key>
+    <Property Name="id_period" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="subscribe" Relationship="Self.FK__subscribe__perio__787EE5A0" FromRole="period" ToRole="subscribe" />
+  </EntityType>
+  <EntityType Name="subscribe">
+    <Key>
+      <PropertyRef Name="id_subscribe" />
+    </Key>
+    <Property Name="id_subscribe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="period_id" Type="Int32" />
+    <Property Name="type_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="buy" Relationship="Self.FK_buy_subscribe" FromRole="subscribe" ToRole="buy" />
+    <NavigationProperty Name="period" Relationship="Self.FK__subscribe__perio__787EE5A0" FromRole="subscribe" ToRole="period" />
+    <NavigationProperty Name="type_subscribe" Relationship="Self.FK_subscribe_type_subscribe" FromRole="subscribe" ToRole="type_subscribe" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="time">
+    <Key>
+      <PropertyRef Name="id_time" />
+    </Key>
+    <Property Name="id_time" Type="Int32" Nullable="false" />
+    <Property Name="times" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="amenities" Relationship="Self.FK_amenities_time" FromRole="time" ToRole="amenities" />
+  </EntityType>
+  <EntityType Name="type_discont">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="discont" Relationship="Self.FK_discont_type_discont" FromRole="type_discont" ToRole="discont" />
+  </EntityType>
+  <EntityType Name="type_subscribe">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="subscribe" Relationship="Self.FK_subscribe_type_subscribe" FromRole="type_subscribe" ToRole="subscribe" />
+  </EntityType>
+  <EntityType Name="type_user">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="users" Relationship="Self.FK_users_type_user" FromRole="type_user" ToRole="users" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type_user_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="clients" Relationship="Self.FK_clients_users" FromRole="users" ToRole="clients" />
+    <NavigationProperty Name="type_user" Relationship="Self.FK_users_type_user" FromRole="users" ToRole="type_user" />
+  </EntityType>
+  <Association Name="FK__exercise__servic__160F4887">
+    <End Role="amenities" Type="Self.amenities" Multiplicity="1" />
+    <End Role="exercise" Type="Self.exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="amenities">
+        <PropertyRef Name="id_servise" />
+      </Principal>
+      <Dependent Role="exercise">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_amenities_day">
+    <End Role="day" Type="Self.day" Multiplicity="1" />
+    <End Role="amenities" Type="Self.amenities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="day">
+        <PropertyRef Name="id_day" />
+      </Principal>
+      <Dependent Role="amenities">
+        <PropertyRef Name="day_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_amenities_employees">
+    <End Role="employees" Type="Self.employees" Multiplicity="1" />
+    <End Role="amenities" Type="Self.amenities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="id_employees" />
+      </Principal>
+      <Dependent Role="amenities">
+        <PropertyRef Name="employees_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_amenities_gym">
+    <End Role="gym" Type="Self.gym" Multiplicity="1" />
+    <End Role="amenities" Type="Self.amenities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gym">
+        <PropertyRef Name="id_gym" />
+      </Principal>
+      <Dependent Role="amenities">
+        <PropertyRef Name="gym_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_amenities_name_service">
+    <End Role="name_service" Type="Self.name_service" Multiplicity="1" />
+    <End Role="amenities" Type="Self.amenities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="name_service">
+        <PropertyRef Name="id_name" />
+      </Principal>
+      <Dependent Role="amenities">
+        <PropertyRef Name="name_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_amenities_time">
+    <End Role="time" Type="Self.time" Multiplicity="1" />
+    <End Role="amenities" Type="Self.amenities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="time">
+        <PropertyRef Name="id_time" />
+      </Principal>
+      <Dependent Role="amenities">
+        <PropertyRef Name="time_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_beauty_servise_list_beauty_services">
+    <End Role="beauty_services" Type="Self.beauty_services" Multiplicity="1" />
+    <End Role="beauty_servise_list" Type="Self.beauty_servise_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="beauty_services">
+        <PropertyRef Name="id_service" />
+      </Principal>
+      <Dependent Role="beauty_servise_list">
+        <PropertyRef Name="service_beaty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_beauty_servise_list_clients">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="beauty_servise_list" Type="Self.beauty_servise_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="beauty_servise_list">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buy_clients">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="buy" Type="Self.buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="buy">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buy_discont">
+    <End Role="discont" Type="Self.discont" Multiplicity="1" />
+    <End Role="buy" Type="Self.buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="discont">
+        <PropertyRef Name="id_discont" />
+      </Principal>
+      <Dependent Role="buy">
+        <PropertyRef Name="discont_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buy_subscribe">
+    <End Role="subscribe" Type="Self.subscribe" Multiplicity="1" />
+    <End Role="buy" Type="Self.buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subscribe">
+        <PropertyRef Name="id_subscribe" />
+      </Principal>
+      <Dependent Role="buy">
+        <PropertyRef Name="subsribe_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_clients_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="clients" Type="Self.clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="clients">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_exercise_clients">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="exercise" Type="Self.exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="exercise">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_discont_type_discont">
+    <End Role="type_discont" Type="Self.type_discont" Multiplicity="1" />
+    <End Role="discont" Type="Self.discont" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_discont">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="discont">
+        <PropertyRef Name="type_discont_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__subscribe__perio__787EE5A0">
+    <End Role="period" Type="Self.period" Multiplicity="0..1" />
+    <End Role="subscribe" Type="Self.subscribe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="period">
+        <PropertyRef Name="id_period" />
+      </Principal>
+      <Dependent Role="subscribe">
+        <PropertyRef Name="period_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subscribe_type_subscribe">
+    <End Role="type_subscribe" Type="Self.type_subscribe" Multiplicity="1" />
+    <End Role="subscribe" Type="Self.subscribe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_subscribe">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="subscribe">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_type_user">
+    <End Role="type_user" Type="Self.type_user" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_user">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="type_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FitnesClubEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="amenities" EntityType="Self.amenities" />
+    <EntitySet Name="beauty_services" EntityType="Self.beauty_services" />
+    <EntitySet Name="beauty_servise_list" EntityType="Self.beauty_servise_list" />
+    <EntitySet Name="buy" EntityType="Self.buy" />
+    <EntitySet Name="clients" EntityType="Self.clients" />
+    <EntitySet Name="day" EntityType="Self.day" />
+    <EntitySet Name="discont" EntityType="Self.discont" />
+    <EntitySet Name="employees" EntityType="Self.employees" />
+    <EntitySet Name="exercise" EntityType="Self.exercise" />
+    <EntitySet Name="gym" EntityType="Self.gym" />
+    <EntitySet Name="name_service" EntityType="Self.name_service" />
+    <EntitySet Name="period" EntityType="Self.period" />
+    <EntitySet Name="subscribe" EntityType="Self.subscribe" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="time" EntityType="Self.time" />
+    <EntitySet Name="type_discont" EntityType="Self.type_discont" />
+    <EntitySet Name="type_subscribe" EntityType="Self.type_subscribe" />
+    <EntitySet Name="type_user" EntityType="Self.type_user" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK__exercise__servic__160F4887" Association="Self.FK__exercise__servic__160F4887">
+      <End Role="amenities" EntitySet="amenities" />
+      <End Role="exercise" EntitySet="exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_amenities_day" Association="Self.FK_amenities_day">
+      <End Role="day" EntitySet="day" />
+      <End Role="amenities" EntitySet="amenities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_amenities_employees" Association="Self.FK_amenities_employees">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="amenities" EntitySet="amenities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_amenities_gym" Association="Self.FK_amenities_gym">
+      <End Role="gym" EntitySet="gym" />
+      <End Role="amenities" EntitySet="amenities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_amenities_name_service" Association="Self.FK_amenities_name_service">
+      <End Role="name_service" EntitySet="name_service" />
+      <End Role="amenities" EntitySet="amenities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_amenities_time" Association="Self.FK_amenities_time">
+      <End Role="time" EntitySet="time" />
+      <End Role="amenities" EntitySet="amenities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_beauty_servise_list_beauty_services" Association="Self.FK_beauty_servise_list_beauty_services">
+      <End Role="beauty_services" EntitySet="beauty_services" />
+      <End Role="beauty_servise_list" EntitySet="beauty_servise_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK_beauty_servise_list_clients" Association="Self.FK_beauty_servise_list_clients">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="beauty_servise_list" EntitySet="beauty_servise_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buy_clients" Association="Self.FK_buy_clients">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="buy" EntitySet="buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buy_discont" Association="Self.FK_buy_discont">
+      <End Role="discont" EntitySet="discont" />
+      <End Role="buy" EntitySet="buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buy_subscribe" Association="Self.FK_buy_subscribe">
+      <End Role="subscribe" EntitySet="subscribe" />
+      <End Role="buy" EntitySet="buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_clients_users" Association="Self.FK_clients_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="clients" EntitySet="clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_exercise_clients" Association="Self.FK_exercise_clients">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="exercise" EntitySet="exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_discont_type_discont" Association="Self.FK_discont_type_discont">
+      <End Role="type_discont" EntitySet="type_discont" />
+      <End Role="discont" EntitySet="discont" />
+    </AssociationSet>
+    <AssociationSet Name="FK__subscribe__perio__787EE5A0" Association="Self.FK__subscribe__perio__787EE5A0">
+      <End Role="period" EntitySet="period" />
+      <End Role="subscribe" EntitySet="subscribe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subscribe_type_subscribe" Association="Self.FK_subscribe_type_subscribe">
+      <End Role="type_subscribe" EntitySet="type_subscribe" />
+      <End Role="subscribe" EntitySet="subscribe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_type_user" Association="Self.FK_users_type_user">
+      <End Role="type_user" EntitySet="type_user" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

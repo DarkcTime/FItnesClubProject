@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище FitnesClubModelContainer" CdmEntityContainer="FitnesClubEntities">
+    <EntitySetMapping Name="amenities">
+      <EntityTypeMapping TypeName="FitnesClubModel.amenities">
+        <MappingFragment StoreEntitySet="amenities">
+          <ScalarProperty Name="id_servise" ColumnName="id_servise" />
+          <ScalarProperty Name="name_id" ColumnName="name_id" />
+          <ScalarProperty Name="time_id" ColumnName="time_id" />
+          <ScalarProperty Name="gym_id" ColumnName="gym_id" />
+          <ScalarProperty Name="day_id" ColumnName="day_id" />
+          <ScalarProperty Name="employees_id" ColumnName="employees_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="beauty_services">
+      <EntityTypeMapping TypeName="FitnesClubModel.beauty_services">
+        <MappingFragment StoreEntitySet="beauty_services">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="id_service" ColumnName="id_service" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="beauty_servise_list">
+      <EntityTypeMapping TypeName="FitnesClubModel.beauty_servise_list">
+        <MappingFragment StoreEntitySet="beauty_servise_list">
+          <ScalarProperty Name="date_buy" ColumnName="date_buy" />
+          <ScalarProperty Name="id_service" ColumnName="id_service" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="service_beaty_id" ColumnName="service_beaty_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="buy">
+      <EntityTypeMapping TypeName="FitnesClubModel.buy">
+        <MappingFragment StoreEntitySet="buy">
+          <ScalarProperty Name="id_buy" ColumnName="id_buy" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="subsribe_id" ColumnName="subsribe_id" />
+          <ScalarProperty Name="discont_id" ColumnName="discont_id" />
+          <ScalarProperty Name="date_buy" ColumnName="date_buy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="FitnesClubModel.clients">
+        <MappingFragment StoreEntitySet="clients">
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="age" ColumnName="age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="day">
+      <EntityTypeMapping TypeName="FitnesClubModel.day">
+        <MappingFragment StoreEntitySet="day">
+          <ScalarProperty Name="id_day" ColumnName="id_day" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="discont">
+      <EntityTypeMapping TypeName="FitnesClubModel.discont">
+        <MappingFragment StoreEntitySet="discont">
+          <ScalarProperty Name="id_discont" ColumnName="id_discont" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="criterion" ColumnName="criterion" />
+          <ScalarProperty Name="type_discont_id" ColumnName="type_discont_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="FitnesClubModel.employees">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="id_employees" ColumnName="id_employees" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exercise">
+      <EntityTypeMapping TypeName="FitnesClubModel.exercise">
+        <MappingFragment StoreEntitySet="exercise">
+          <ScalarProperty Name="id_exercise" ColumnName="id_exercise" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="date_write" ColumnName="date_write" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gym">
+      <EntityTypeMapping TypeName="FitnesClubModel.gym">
+        <MappingFragment StoreEntitySet="gym">
+          <ScalarProperty Name="id_gym" ColumnName="id_gym" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="name_service">
+      <EntityTypeMapping TypeName="FitnesClubModel.name_service">
+        <MappingFragment StoreEntitySet="name_service">
+          <ScalarProperty Name="id_name" ColumnName="id_name" />
+          <ScalarProperty Name="name_ser" ColumnName="name_ser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="period">
+      <EntityTypeMapping TypeName="FitnesClubModel.period">
+        <MappingFragment StoreEntitySet="period">
+          <ScalarProperty Name="id_period" ColumnName="id_period" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subscribe">
+      <EntityTypeMapping TypeName="FitnesClubModel.subscribe">
+        <MappingFragment StoreEntitySet="subscribe">
+          <ScalarProperty Name="id_subscribe" ColumnName="id_subscribe" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="period_id" ColumnName="period_id" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FitnesClubModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="time">
+      <EntityTypeMapping TypeName="FitnesClubModel.time">
+        <MappingFragment StoreEntitySet="time">
+          <ScalarProperty Name="id_time" ColumnName="id_time" />
+          <ScalarProperty Name="times" ColumnName="times" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_discont">
+      <EntityTypeMapping TypeName="FitnesClubModel.type_discont">
+        <MappingFragment StoreEntitySet="type_discont">
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_subscribe">
+      <EntityTypeMapping TypeName="FitnesClubModel.type_subscribe">
+        <MappingFragment StoreEntitySet="type_subscribe">
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_user">
+      <EntityTypeMapping TypeName="FitnesClubModel.type_user">
+        <MappingFragment StoreEntitySet="type_user">
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="FitnesClubModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="type_user_id" ColumnName="type_user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
